@@ -8,7 +8,7 @@ function Filter() {
       paddingY="15px"
       backgroundColor="white"
     >
-      <Text fontSize="md" fontWeight="bold" color="gray.500">
+      <Text fontSize="md" fontWeight="bold" color="gray.600">
         Filter&nbsp;:
       </Text>
       <Select placeholder="Select option" width="xl">

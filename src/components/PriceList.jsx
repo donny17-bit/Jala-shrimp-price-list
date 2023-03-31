@@ -41,7 +41,7 @@ function PriceList() {
         </Button>
       </Flex>
       <hr></hr>
-      <TableContainer>
+      <TableContainer paddingTop="10px" paddingX="20px">
         <Table variant="striped" colorScheme="blackAlpha">
           <Thead backgroundColor="#eaeff5">
             <Tr>
@@ -60,7 +60,15 @@ function PriceList() {
               <Td>An****asd</Td>
               <Td>Rp 53.000</Td>
               <Td>
-                <Button>LIHAT DETAIL</Button>
+                <Button
+                  bgColor="#1b72d3"
+                  color="white"
+                  fontSize="sm"
+                  height="8"
+                  borderRadius="3px"
+                >
+                  LIHAT DETAIL
+                </Button>
               </Td>
               <Td>sosmed</Td>
             </Tr>
@@ -70,7 +78,15 @@ function PriceList() {
               <Td>An****asd</Td>
               <Td>Rp 53.000</Td>
               <Td>
-                <Button>LIHAT DETAIL</Button>
+                <Button
+                  bgColor="#1b72d3"
+                  color="white"
+                  fontSize="sm"
+                  height="8"
+                  borderRadius="3px"
+                >
+                  LIHAT DETAIL
+                </Button>
               </Td>
               <Td>sosmed</Td>
             </Tr>
@@ -80,7 +96,15 @@ function PriceList() {
               <Td>An****asd</Td>
               <Td>Rp 53.000</Td>
               <Td>
-                <Button>LIHAT DETAIL</Button>
+                <Button
+                  bgColor="#1b72d3"
+                  color="white"
+                  fontSize="sm"
+                  height="8"
+                  borderRadius="3px"
+                >
+                  LIHAT DETAIL
+                </Button>
               </Td>
               <Td>sosmed</Td>
             </Tr>
@@ -90,7 +114,15 @@ function PriceList() {
               <Td>An****asd</Td>
               <Td>Rp 53.000</Td>
               <Td>
-                <Button>LIHAT DETAIL</Button>
+                <Button
+                  bgColor="#1b72d3"
+                  color="white"
+                  fontSize="sm"
+                  height="8"
+                  borderRadius="3px"
+                >
+                  LIHAT DETAIL
+                </Button>
               </Td>
               <Td>sosmed</Td>
             </Tr>
