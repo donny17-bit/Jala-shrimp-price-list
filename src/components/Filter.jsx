@@ -11,17 +11,17 @@ function Filter() {
       <Text fontSize="md" fontWeight="bold" color="gray.500">
         Filter&nbsp;:
       </Text>
-      <Select placeholder="Select option" className="flex-1">
+      <Select placeholder="Select option" width="xl">
         <option value="option1">Option 1</option>
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
       </Select>
-      <Select placeholder="Select option" className="flex-1">
+      <Select placeholder="Select option" width="52">
         <option value="option1">Option 1</option>
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
       </Select>
-      <Select placeholder="Select option" className="flex-1">
+      <Select placeholder="Select option" width="52">
         <option value="option1">Option 1</option>
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>

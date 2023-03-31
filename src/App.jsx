@@ -1,8 +1,18 @@
 import { useState } from "react";
-import { Box, Container, Flex, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  Image,
+  Link,
+  Text,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import Filter from "./components/Filter";
 import CardTrend from "./components/CardPriceTrend";
 import PriceList from "./components/PriceList";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -10,8 +20,20 @@ function App() {
       <Filter />
       <Container backgroundColor="gray.100" maxW="full" paddingY="15px">
         <Flex gap="20px">
-          <Box width="0.5" flex="1" height="7rem" border="2px"></Box>
-          <Box width="0.5" flex="1" height="7rem" border="2px"></Box>
+          <Image
+            flex="1"
+            height="7rem"
+            src="https://drive.google.com/uc?id=15_wFMILzgqt-NZ5A_lxqlonQVYSNjw2_&export=media"
+            alt="Banner"
+            objectFit="cover"
+          />
+          <Image
+            flex="1"
+            height="7rem"
+            src="https://drive.google.com/uc?id=1YIyOuyXFoJ5e6FFtRKnnX_iKUuRBk7nX&export=media"
+            alt="Banner"
+            objectFit="cover"
+          />
         </Flex>
         <Flex marginTop="20px" gap="20px">
           <Box
@@ -64,13 +86,26 @@ function App() {
           </Flex>
         </Flex>
         <Flex gap="20px" marginTop="20px">
-          <Box width="0.5" flex="1" height="7rem" border="2px"></Box>
-          <Box width="0.5" flex="1" height="7rem" border="2px"></Box>
+          <Image
+            flex="1"
+            height="7rem"
+            src="https://drive.google.com/uc?id=1ZeaUI_0OWkEYM7anqFGbcJl4fNRkHsa5&export=media"
+            alt="Banner"
+            objectFit="cover"
+          />
+          <Image
+            flex="1"
+            height="7rem"
+            src="https://drive.google.com/uc?id=1g1UY_e2uPPwA3n3QOohHB0hrGB0K_mtd&export=media"
+            alt="Banner"
+            objectFit="cover"
+          />
         </Flex>
         <Box marginTop="20px">
           <PriceList />
         </Box>
       </Container>
+      <Footer />
     </>
   );
 }

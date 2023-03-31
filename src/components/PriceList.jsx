@@ -1,4 +1,18 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
 
 function PriceList() {
   return (
@@ -27,6 +41,62 @@ function PriceList() {
         </Button>
       </Flex>
       <hr></hr>
+      <TableContainer>
+        <Table variant="striped" colorScheme="blackAlpha">
+          <Thead backgroundColor="#eaeff5">
+            <Tr>
+              <Th>Tanggal</Th>
+              <Th>Lokasi</Th>
+              <Th>Supplier</Th>
+              <Th>Harga Size 100</Th>
+              <Th />
+              <Th />
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td>30 Maret 2023</Td>
+              <Td>Jawa Tengah</Td>
+              <Td>An****asd</Td>
+              <Td>Rp 53.000</Td>
+              <Td>
+                <Button>LIHAT DETAIL</Button>
+              </Td>
+              <Td>sosmed</Td>
+            </Tr>
+            <Tr>
+              <Td>30 Maret 2023</Td>
+              <Td>Jawa Tengah</Td>
+              <Td>An****asd</Td>
+              <Td>Rp 53.000</Td>
+              <Td>
+                <Button>LIHAT DETAIL</Button>
+              </Td>
+              <Td>sosmed</Td>
+            </Tr>
+            <Tr>
+              <Td>30 Maret 2023</Td>
+              <Td>Jawa Tengah</Td>
+              <Td>An****asd</Td>
+              <Td>Rp 53.000</Td>
+              <Td>
+                <Button>LIHAT DETAIL</Button>
+              </Td>
+              <Td>sosmed</Td>
+            </Tr>
+            <Tr>
+              <Td>30 Maret 2023</Td>
+              <Td>Jawa Tengah</Td>
+              <Td>An****asd</Td>
+              <Td>Rp 53.000</Td>
+              <Td>
+                <Button>LIHAT DETAIL</Button>
+              </Td>
+              <Td>sosmed</Td>
+            </Tr>
+          </Tbody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 }
