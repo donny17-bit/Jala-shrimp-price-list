@@ -9,6 +9,7 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+
 import Filter from "./components/Filter";
 import CardTrend from "./components/CardPriceTrend";
 import PriceList from "./components/PriceList";
@@ -105,6 +106,7 @@ function App() {
           <PriceList />
         </Box>
       </Container>
+
       <Footer />
     </>
   );

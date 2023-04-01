@@ -6,7 +6,6 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
@@ -54,7 +53,7 @@ function PriceList() {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
+            <Tr _hover={{ bgColor: "#e0e0e0" }}>
               <Td>30 Maret 2023</Td>
               <Td>Jawa Tengah</Td>
               <Td>An****asd</Td>
@@ -66,13 +65,15 @@ function PriceList() {
                   fontSize="sm"
                   height="8"
                   borderRadius="3px"
+                  _hover={{ bgColor: "#1b72d3" }}
+                  _active={{ bgColor: "#1767bf" }}
                 >
                   LIHAT DETAIL
                 </Button>
               </Td>
               <Td>sosmed</Td>
             </Tr>
-            <Tr>
+            <Tr _hover={{ bgColor: "#e0e0e0" }}>
               <Td>30 Maret 2023</Td>
               <Td>Jawa Tengah</Td>
               <Td>An****asd</Td>
@@ -84,13 +85,15 @@ function PriceList() {
                   fontSize="sm"
                   height="8"
                   borderRadius="3px"
+                  _hover={{ bgColor: "#1b72d3" }}
+                  _active={{ bgColor: "#1767bf" }}
                 >
                   LIHAT DETAIL
                 </Button>
               </Td>
               <Td>sosmed</Td>
             </Tr>
-            <Tr>
+            <Tr _hover={{ bgColor: "#e0e0e0" }}>
               <Td>30 Maret 2023</Td>
               <Td>Jawa Tengah</Td>
               <Td>An****asd</Td>
@@ -102,13 +105,15 @@ function PriceList() {
                   fontSize="sm"
                   height="8"
                   borderRadius="3px"
+                  _hover={{ bgColor: "#1b72d3" }}
+                  _active={{ bgColor: "#1767bf" }}
                 >
                   LIHAT DETAIL
                 </Button>
               </Td>
               <Td>sosmed</Td>
             </Tr>
-            <Tr>
+            <Tr _hover={{ bgColor: "#e0e0e0" }}>
               <Td>30 Maret 2023</Td>
               <Td>Jawa Tengah</Td>
               <Td>An****asd</Td>
@@ -120,6 +125,8 @@ function PriceList() {
                   fontSize="sm"
                   height="8"
                   borderRadius="3px"
+                  _hover={{ bgColor: "#1b72d3" }}
+                  _active={{ bgColor: "#1767bf" }}
                 >
                   LIHAT DETAIL
                 </Button>

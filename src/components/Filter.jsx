@@ -1,6 +1,11 @@
 import { HStack, Select, Text } from "@chakra-ui/react";
 
 function Filter() {
+  const sizes = [
+    20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180,
+    190, 200,
+  ];
+
   return (
     <HStack
       spacing="24px"
@@ -16,12 +21,12 @@ function Filter() {
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
       </Select>
-      <Select placeholder="Select option" width="52">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+      <Select placeholder="Pilih size udang" width="52">
+        {sizes.map((item) => (
+          <option value={item}>{item}</option>
+        ))}
       </Select>
-      <Select placeholder="Select option" width="52">
+      <Select placeholder="Vannamei" width="52">
         <option value="option1">Option 1</option>
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
