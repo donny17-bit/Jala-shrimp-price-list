@@ -14,8 +14,22 @@ import {
 import { data } from "../data/shrimp_prices.json";
 
 function PriceList() {
-  console.log(data);
+  console.log(data[0].date.slice(5, 7) === "05");
+  console.log(data[0].creator.name);
   const size = 100;
+  let username = [];
+
+  data.map((item) => {
+    let stars = "*";
+    for (let i = 0; i < item.creator.name.length - 2; i++) {
+      stars += "*";
+    }
+    username.push(item.creator.name[0] + stars + item.creator.name.slice(-2));
+
+    // item.creator.name.replace(
+    //   item.creator.name.slice(1, item.creator.name.length - 2), stars
+    // )
+  });
 
   return (
     <Box
@@ -61,14 +75,41 @@ function PriceList() {
             </Tr>
           </Thead>
           <Tbody>
-            {data.map((item) => (
+            {data.map((item, index) => (
               <Tr _hover={{ bgColor: "#e0e0e0" }}>
-                <Td>{item.date}</Td>
+                <Td>
+                  {item.date.slice(8)}&nbsp;
+                  {item.date.slice(5, 7) === "01"
+                    ? "Januari"
+                    : item.date.slice(5, 7) === "02"
+                    ? "Februari"
+                    : item.date.slice(5, 7) === "03"
+                    ? "Maret"
+                    : item.date.slice(5, 7) === "04"
+                    ? "April"
+                    : item.date.slice(5, 7) === "05"
+                    ? "Mei"
+                    : item.date.slice(5, 7) === "06"
+                    ? "Juni"
+                    : item.date.slice(5, 7) === "07"
+                    ? "Juli"
+                    : item.date.slice(5, 7) === "08"
+                    ? "Agustus"
+                    : item.date.slice(5, 7) === "09"
+                    ? "September"
+                    : item.date.slice(5, 7) === "10"
+                    ? "Oktober"
+                    : item.date.slice(5, 7) === "11"
+                    ? "November"
+                    : "Desember"}
+                  &nbsp;
+                  {item.date.slice(0, 4)}
+                </Td>
                 <Td flexDirection="col">
                   <Text>{item.region.province_name}</Text>
                   <Text>{item.region.name}</Text>
                 </Td>
-                <Td>{item.creator.name}</Td>
+                <Td>{username[index]}</Td>
                 <Td>Rp {item.size_100}</Td>
                 <Td>
                   <Button
@@ -86,67 +127,6 @@ function PriceList() {
                 <Td>sosmed</Td>
               </Tr>
             ))}
-
-            <Tr _hover={{ bgColor: "#e0e0e0" }}>
-              <Td>30 Maret 2023</Td>
-              <Td>Jawa Tengah</Td>
-              <Td>An****asd</Td>
-              <Td>Rp 53.000</Td>
-              <Td>
-                <Button
-                  bgColor="#1b72d3"
-                  color="white"
-                  fontSize="sm"
-                  height="8"
-                  borderRadius="3px"
-                  _hover={{ bgColor: "#1b72d3" }}
-                  _active={{ bgColor: "#1767bf" }}
-                >
-                  LIHAT DETAIL
-                </Button>
-              </Td>
-              <Td>sosmed</Td>
-            </Tr>
-            <Tr _hover={{ bgColor: "#e0e0e0" }}>
-              <Td>30 Maret 2023</Td>
-              <Td>Jawa Tengah</Td>
-              <Td>An****asd</Td>
-              <Td>Rp 53.000</Td>
-              <Td>
-                <Button
-                  bgColor="#1b72d3"
-                  color="white"
-                  fontSize="sm"
-                  height="8"
-                  borderRadius="3px"
-                  _hover={{ bgColor: "#1b72d3" }}
-                  _active={{ bgColor: "#1767bf" }}
-                >
-                  LIHAT DETAIL
-                </Button>
-              </Td>
-              <Td>sosmed</Td>
-            </Tr>
-            <Tr _hover={{ bgColor: "#e0e0e0" }}>
-              <Td>30 Maret 2023</Td>
-              <Td>Jawa Tengah</Td>
-              <Td>An****asd</Td>
-              <Td>Rp 53.000</Td>
-              <Td>
-                <Button
-                  bgColor="#1b72d3"
-                  color="white"
-                  fontSize="sm"
-                  height="8"
-                  borderRadius="3px"
-                  _hover={{ bgColor: "#1b72d3" }}
-                  _active={{ bgColor: "#1767bf" }}
-                >
-                  LIHAT DETAIL
-                </Button>
-              </Td>
-              <Td>sosmed</Td>
-            </Tr>
           </Tbody>
         </Table>
       </TableContainer>

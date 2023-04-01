@@ -1,4 +1,5 @@
 import { HStack, Select, Text } from "@chakra-ui/react";
+import { data } from "../data/regions.json";
 
 function Filter() {
   const sizes = [
@@ -16,10 +17,12 @@ function Filter() {
       <Text fontSize="md" fontWeight="bold" color="gray.600">
         Filter&nbsp;:
       </Text>
-      <Select placeholder="Select option" width="xl">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+      <Select placeholder="Pilih Lokasi" width="xl">
+        {data.map((item) => (
+          <option value={item.id} key={item.id}>
+            {item.name}
+          </option>
+        ))}
       </Select>
       <Select placeholder="Pilih size udang" width="52">
         {sizes.map((item, index) => (
