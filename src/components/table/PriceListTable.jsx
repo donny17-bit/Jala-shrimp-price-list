@@ -16,10 +16,10 @@ import {
 } from "@chakra-ui/react";
 import { TiSocialFacebook, TiSocialTwitter } from "react-icons/ti";
 import { FaWhatsapp } from "react-icons/fa";
-import { data } from "../data/shrimp_prices.json";
+import { data } from "../../data/shrimp_prices.json";
 import { Link } from "react-router-dom";
 
-function PriceList() {
+function PriceListTable() {
   console.log(data[0].date.slice(5, 7) === "05");
   console.log(data[0].creator.name);
   const size = 100;
@@ -184,4 +184,4 @@ function PriceList() {
   );
 }
 
-export default PriceList;
+export default PriceListTable;

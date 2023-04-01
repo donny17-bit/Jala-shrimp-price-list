@@ -10,10 +10,10 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-import Filter from "../components/Filter";
-import CardTrend from "../components/CardPriceTrend";
-import PriceList from "../components/PriceList";
-import Footer from "../components/Footer";
+import Filter from "../components/layout/Filter";
+import CardTrend from "../components/card/CardPriceTrend";
+import PriceListTable from "../components/table/PriceListTable";
+import Footer from "../components/layout/Footer";
 
 function ListPrices() {
   return (
@@ -103,7 +103,7 @@ function ListPrices() {
           />
         </Flex>
         <Box marginTop="20px">
-          <PriceList />
+          <PriceListTable />
         </Box>
       </Container>
       <Footer />

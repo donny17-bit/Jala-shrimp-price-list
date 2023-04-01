@@ -1,5 +1,5 @@
 import { HStack, Select, Text } from "@chakra-ui/react";
-import { data } from "../data/regions.json";
+import { data } from "../../data/regions.json";
 
 function Filter() {
   const sizes = [
