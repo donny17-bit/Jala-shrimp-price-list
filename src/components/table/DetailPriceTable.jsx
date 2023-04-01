@@ -21,6 +21,7 @@ function DetailPriceTable() {
     <Box
       flex="1.5"
       backgroundColor="white"
+      height="fit-content"
       borderRadius="5px"
       border="1px"
       borderColor="gray.200"

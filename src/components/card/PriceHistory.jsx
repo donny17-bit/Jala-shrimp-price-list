@@ -10,8 +10,49 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { HiOutlineInformationCircle } from "react-icons/hi";
+import { Line } from "react-chartjs-2";
+import {
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Chart,
+  Filler,
+} from "chart.js";
 
 function PriceHistory() {
+  Chart.register(Filler);
+  Chart.register(CategoryScale);
+  Chart.register(LinearScale);
+  Chart.register(PointElement);
+  Chart.register(LineElement);
+
+  const options = {
+    responsive: true,
+  };
+
+  const dataSet1 = {
+    labels: ["Jun", "Jul", "Aug"],
+    datasets: [
+      {
+        fill: true,
+        id: 1,
+        label: "",
+        data: [5, 4, 2],
+        borderColor: "#35e3a7",
+        backgroundColor: "#8cefcd",
+      },
+      {
+        fill: true,
+        id: 2,
+        label: "",
+        data: [6, 7, 2],
+        borderColor: "red",
+        backgroundColor: "pink",
+      },
+    ],
+  };
+
   return (
     <Box
       flex="1"
@@ -60,6 +101,7 @@ function PriceHistory() {
           <Text marginX="5px">-</Text>
           <Input type="date" borderRadius="3px" h="40px" />
         </Flex>
+        <Line datasetIdKey="id" data={dataSet1} options={options} />
         <Box
           bgColor="#fdf6e6"
           padding="15px"

@@ -14,6 +14,7 @@ import DetailHeader from "../components/layout/DetailHeader";
 import Footer from "../components/layout/Footer";
 import DetailPriceTable from "../components/table/DetailPriceTable";
 import PriceHistory from "../components/card/PriceHistory";
+import CardPrice from "../components/card/CardPrice";
 
 function DetailPrice() {
   return (
@@ -46,7 +47,6 @@ function DetailPrice() {
           height="365px"
           backgroundColor="white"
           borderRadius="5px"
-          paddingY="10px"
           border="1px"
           borderColor="gray.200"
         >
@@ -54,10 +54,16 @@ function DetailPrice() {
             color="gray.600"
             fontSize="md"
             fontWeight="medium"
-            paddingStart="15px"
+            padding="15px"
           >
             Harga Lainnya
           </Text>
+          <hr></hr>
+          <Wrap padding="15px">
+            <WrapItem>
+              <CardPrice />
+            </WrapItem>
+          </Wrap>
         </Box>
         <Flex gap="20px" marginTop="20px">
           <Image
