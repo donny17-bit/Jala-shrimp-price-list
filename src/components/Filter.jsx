@@ -22,14 +22,14 @@ function Filter() {
         <option value="option3">Option 3</option>
       </Select>
       <Select placeholder="Pilih size udang" width="52">
-        {sizes.map((item) => (
-          <option value={item}>{item}</option>
+        {sizes.map((item, index) => (
+          <option key={index} value={item}>
+            Size {item}
+          </option>
         ))}
       </Select>
-      <Select placeholder="Vannamei" width="52">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+      <Select width="52">
+        <option value="vannamei">Vannamei</option>
       </Select>
     </HStack>
   );

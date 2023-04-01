@@ -9,11 +9,14 @@ import {
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
+import { data } from "../data/shrimp_prices.json";
 
 function PriceList() {
+  console.log(data);
+  const size = 100;
+
   return (
     <Box
       //   padding="10px"
@@ -40,39 +43,50 @@ function PriceList() {
         </Button>
       </Flex>
       <hr></hr>
-      <TableContainer paddingTop="10px" paddingX="20px">
+      <TableContainer
+        paddingTop="10px"
+        paddingX="20px"
+        height="26rem"
+        overflowY="scroll"
+      >
         <Table variant="striped" colorScheme="blackAlpha">
           <Thead backgroundColor="#eaeff5">
             <Tr>
               <Th>Tanggal</Th>
               <Th>Lokasi</Th>
               <Th>Supplier</Th>
-              <Th>Harga Size 100</Th>
+              <Th>Harga Size {size}</Th>
               <Th />
               <Th />
             </Tr>
           </Thead>
           <Tbody>
-            <Tr _hover={{ bgColor: "#e0e0e0" }}>
-              <Td>30 Maret 2023</Td>
-              <Td>Jawa Tengah</Td>
-              <Td>An****asd</Td>
-              <Td>Rp 53.000</Td>
-              <Td>
-                <Button
-                  bgColor="#1b72d3"
-                  color="white"
-                  fontSize="sm"
-                  height="8"
-                  borderRadius="3px"
-                  _hover={{ bgColor: "#1b72d3" }}
-                  _active={{ bgColor: "#1767bf" }}
-                >
-                  LIHAT DETAIL
-                </Button>
-              </Td>
-              <Td>sosmed</Td>
-            </Tr>
+            {data.map((item) => (
+              <Tr _hover={{ bgColor: "#e0e0e0" }}>
+                <Td>{item.date}</Td>
+                <Td flexDirection="col">
+                  <Text>{item.region.province_name}</Text>
+                  <Text>{item.region.name}</Text>
+                </Td>
+                <Td>{item.creator.name}</Td>
+                <Td>Rp {item.size_100}</Td>
+                <Td>
+                  <Button
+                    bgColor="#1b72d3"
+                    color="white"
+                    fontSize="sm"
+                    height="8"
+                    borderRadius="3px"
+                    _hover={{ bgColor: "#1b72d3" }}
+                    _active={{ bgColor: "#1767bf" }}
+                  >
+                    LIHAT DETAIL
+                  </Button>
+                </Td>
+                <Td>sosmed</Td>
+              </Tr>
+            ))}
+
             <Tr _hover={{ bgColor: "#e0e0e0" }}>
               <Td>30 Maret 2023</Td>
               <Td>Jawa Tengah</Td>
