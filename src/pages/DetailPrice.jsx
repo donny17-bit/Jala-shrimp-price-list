@@ -44,11 +44,11 @@ function DetailPrice() {
         <Box
           marginTop="20px"
           flex="1"
-          height="365px"
           backgroundColor="white"
           borderRadius="5px"
           border="1px"
           borderColor="gray.200"
+          paddingBottom="15px"
         >
           <Text
             color="gray.600"
@@ -59,11 +59,14 @@ function DetailPrice() {
             Harga Lainnya
           </Text>
           <hr></hr>
-          <Wrap padding="15px">
-            <WrapItem>
-              <CardPrice />
-            </WrapItem>
-          </Wrap>
+          <Flex padding="15px" overflowX="scroll" direction="row" gap="20px">
+            <CardPrice />
+            <CardPrice />
+            <CardPrice />
+            <CardPrice />
+            <CardPrice />
+            <CardPrice />
+          </Flex>
         </Box>
         <Flex gap="20px" marginTop="20px">
           <Image

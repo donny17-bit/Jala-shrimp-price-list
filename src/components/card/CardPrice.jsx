@@ -13,6 +13,7 @@ function CardPrice() {
   return (
     <Box
       bgColor="#f5f5f5"
+      minW="20rem"
       w="20rem"
       h="15rem"
       border="1px"
