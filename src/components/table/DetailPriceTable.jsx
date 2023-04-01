@@ -14,6 +14,7 @@ import {
   Heading,
   HStack,
 } from "@chakra-ui/react";
+import { Facebook, Twitter, Whatsapp, Messenger } from "../button/index";
 
 function DetailPriceTable() {
   return (
@@ -107,39 +108,22 @@ function DetailPriceTable() {
           </Tbody>
         </Table>
       </TableContainer>
-      <Flex>
-        <Text fontSize="sm" fontWeight="bold" color="gray.600" padding="15px">
+      <Flex justify="space-between" padding="15px">
+        <Text fontSize="sm" fontWeight="bold" color="gray.600">
           Catatan
         </Text>
-        <HStack border="1px" borderColor="gray.500" borderRadius="5px">
+        <HStack
+          border="1px"
+          borderColor="gray.500"
+          borderRadius="5px"
+          padding="10px"
+        >
           <Text>1</Text>
           <HStack>
-            <IconButton
-              icon={
-                <Icon as={TiSocialFacebook} color="white" fontSize="20px" />
-              }
-              paddingX="0px"
-              bgColor="#4267b2"
-              borderRadius="full"
-              size="sm"
-              _hover={{ bg: "#6885c1", marginTop: "-5px" }}
-            />
-            <IconButton
-              icon={<Icon as={FaWhatsapp} color="white" fontSize="18px" />}
-              paddingX="0px"
-              bgColor="#25d366"
-              borderRadius="full"
-              size="sm"
-              _hover={{ bg: "#51dc85", marginTop: "-5px" }}
-            />
-            <IconButton
-              icon={<Icon as={TiSocialTwitter} color="white" fontSize="20px" />}
-              paddingX="0px"
-              bgColor="#55acee"
-              borderRadius="full"
-              size="sm"
-              _hover={{ bg: "#77bdf1", marginTop: "-5px" }}
-            />
+            <Facebook />
+            <Whatsapp />
+            <Twitter />
+            <Messenger />
           </HStack>
         </HStack>
       </Flex>

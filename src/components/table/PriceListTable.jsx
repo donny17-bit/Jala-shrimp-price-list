@@ -10,14 +10,11 @@ import {
   Th,
   Td,
   TableContainer,
-  Icon,
   HStack,
-  IconButton,
 } from "@chakra-ui/react";
-import { TiSocialFacebook, TiSocialTwitter } from "react-icons/ti";
-import { FaWhatsapp } from "react-icons/fa";
 import { data } from "../../data/shrimp_prices.json";
 import { Link } from "react-router-dom";
+import { Facebook, Twitter, Whatsapp } from "../button/index";
 
 function PriceListTable() {
   console.log(data[0].date.slice(5, 7) === "05");
@@ -135,44 +132,9 @@ function PriceListTable() {
                 </Td>
                 <Td>
                   <HStack>
-                    <IconButton
-                      icon={
-                        <Icon
-                          as={TiSocialFacebook}
-                          color="white"
-                          fontSize="20px"
-                        />
-                      }
-                      paddingX="0px"
-                      bgColor="#4267b2"
-                      borderRadius="full"
-                      size="sm"
-                      _hover={{ bg: "#6885c1", marginTop: "-5px" }}
-                    />
-                    <IconButton
-                      icon={
-                        <Icon as={FaWhatsapp} color="white" fontSize="18px" />
-                      }
-                      paddingX="0px"
-                      bgColor="#25d366"
-                      borderRadius="full"
-                      size="sm"
-                      _hover={{ bg: "#51dc85", marginTop: "-5px" }}
-                    />
-                    <IconButton
-                      icon={
-                        <Icon
-                          as={TiSocialTwitter}
-                          color="white"
-                          fontSize="20px"
-                        />
-                      }
-                      paddingX="0px"
-                      bgColor="#55acee"
-                      borderRadius="full"
-                      size="sm"
-                      _hover={{ bg: "#77bdf1", marginTop: "-5px" }}
-                    />
+                    <Facebook />
+                    <Whatsapp />
+                    <Twitter />
                   </HStack>
                 </Td>
               </Tr>
