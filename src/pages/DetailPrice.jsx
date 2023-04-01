@@ -6,9 +6,13 @@ import {
   Wrap,
   WrapItem,
   Image,
+  VStack,
+  Link,
 } from "@chakra-ui/react";
 import React from "react";
-import DetailHeader from "../components/DetailHeader";
+import DetailHeader from "../components/layout/DetailHeader";
+import Footer from "../components/layout/Footer";
+import DetailPriceTable from "../components/table/DetailPriceTable";
 
 function DetailPrice() {
   return (
@@ -16,25 +20,7 @@ function DetailPrice() {
       <DetailHeader />
       <Container backgroundColor="gray.100" maxW="full" paddingY="15px">
         <Flex gap="20px">
-          <Box
-            flex="1.5"
-            // width="60%"
-            height="365px"
-            backgroundColor="white"
-            borderRadius="5px"
-            paddingY="10px"
-            border="1px"
-            borderColor="gray.200"
-          >
-            <Text
-              color="gray.600"
-              fontSize="md"
-              fontWeight="medium"
-              paddingStart="15px"
-            >
-              Detail Harga Udang
-            </Text>
-          </Box>
+          <DetailPriceTable />
           <Box
             flex="1"
             height="365px"
@@ -107,6 +93,7 @@ function DetailPrice() {
           />
         </Flex>
       </Container>
+      <Footer />
     </>
   );
 }
