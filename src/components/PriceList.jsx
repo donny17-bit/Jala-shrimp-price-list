@@ -17,6 +17,7 @@ import {
 import { TiSocialFacebook, TiSocialTwitter } from "react-icons/ti";
 import { FaWhatsapp } from "react-icons/fa";
 import { data } from "../data/shrimp_prices.json";
+import { Link } from "react-router-dom";
 
 function PriceList() {
   console.log(data[0].date.slice(5, 7) === "05");
@@ -24,6 +25,7 @@ function PriceList() {
   const size = 100;
   let username = [];
 
+  // censor name
   data.map((item) => {
     let stars = "*";
     for (let i = 0; i < item.creator.name.length - 2; i++) {
@@ -38,7 +40,6 @@ function PriceList() {
 
   return (
     <Box
-      //   padding="10px"
       border="1px"
       backgroundColor="white"
       width="full"
@@ -82,6 +83,7 @@ function PriceList() {
           <Tbody>
             {data.map((item, index) => (
               <Tr _hover={{ bgColor: "#e0e0e0" }}>
+                {/* convert month number to word */}
                 <Td>
                   {item.date.slice(8)}&nbsp;
                   {item.date.slice(5, 7) === "01"
@@ -117,17 +119,19 @@ function PriceList() {
                 <Td>{username[index]}</Td>
                 <Td>Rp {item.size_100}</Td>
                 <Td>
-                  <Button
-                    bgColor="#1b72d3"
-                    color="white"
-                    fontSize="sm"
-                    height="8"
-                    borderRadius="3px"
-                    _hover={{ bgColor: "#1b72d3" }}
-                    _active={{ bgColor: "#1767bf" }}
-                  >
-                    LIHAT DETAIL
-                  </Button>
+                  <Link to={"detail"}>
+                    <Button
+                      bgColor="#1b72d3"
+                      color="white"
+                      fontSize="sm"
+                      height="8"
+                      borderRadius="3px"
+                      _hover={{ bgColor: "#1b72d3" }}
+                      _active={{ bgColor: "#1767bf" }}
+                    >
+                      LIHAT DETAIL
+                    </Button>
+                  </Link>
                 </Td>
                 <Td>
                   <HStack>
