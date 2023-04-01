@@ -114,11 +114,19 @@ function DetailPriceTable() {
         </Text>
         <HStack
           border="1px"
-          borderColor="gray.500"
+          borderColor="gray.400"
           borderRadius="5px"
-          padding="10px"
+          paddingX="10px"
+          paddingY="5px"
         >
-          <Text>1</Text>
+          <Flex flexDirection="column">
+            <Text fontSize="md" color="gray.600" textAlign="center">
+              1
+            </Text>
+            <Text fontSize="xs" color="gray.500">
+              Shares
+            </Text>
+          </Flex>
           <HStack>
             <Facebook />
             <Whatsapp />
