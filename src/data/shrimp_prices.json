@@ -3814,7 +3814,7 @@
     "from": 1,
     "last_page": 149,
     "path": "https://app.jala.tech/api/shrimp_prices",
-    "per_page": 15,
+    "per_page": 30,
     "to": 15,
     "total": 2221
   }
