@@ -78,6 +78,7 @@ function PriceHistory() {
             h="30px"
             _hover={{ borderColor: "#bbdef8", fontWeight: "semibold" }}
             _active={{ bgColor: "#bbdef8", fontWeight: "semibold" }}
+            isActive={true}
           >
             Riwayat
           </Button>

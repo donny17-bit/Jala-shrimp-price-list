@@ -22,6 +22,7 @@ function DetailPrice() {
 
   const detail = location.state.item;
   const otherData = location.state.data;
+  console.log(detail);
 
   return (
     <>
@@ -34,17 +35,21 @@ function DetailPrice() {
           <DetailPriceTable detail={detail} />
           <PriceHistory />
         </Flex>
-        <Flex gap="20px" marginTop="20px">
+        <Flex
+          gap="20px"
+          marginTop="20px"
+          flexDirection={["column", "column", "column", "row"]}
+        >
           <Image
             flex="1"
-            height="7rem"
+            height={{ sm: "2rem", md: "5rem" }}
             src="https://drive.google.com/uc?id=15_wFMILzgqt-NZ5A_lxqlonQVYSNjw2_&export=media"
             alt="Banner"
             objectFit="cover"
           />
           <Image
             flex="1"
-            height="7rem"
+            height={{ sm: "2rem", md: "5rem" }}
             src="https://drive.google.com/uc?id=1YIyOuyXFoJ5e6FFtRKnnX_iKUuRBk7nX&export=media"
             alt="Banner"
             objectFit="cover"
@@ -69,25 +74,29 @@ function DetailPrice() {
           </Text>
           <hr></hr>
           <Flex padding="15px" overflowX="scroll" direction="row" gap="20px">
-            <CardPrice />
-            <CardPrice />
-            <CardPrice />
-            <CardPrice />
-            <CardPrice />
-            <CardPrice />
+            <CardPrice detail={otherData[0]} />
+            <CardPrice detail={otherData[3]} />
+            <CardPrice detail={otherData[4]} />
+            <CardPrice detail={otherData[2]} />
+            <CardPrice detail={otherData[5]} />
+            <CardPrice detail={otherData[1]} />
           </Flex>
         </Box>
-        <Flex gap="20px" marginTop="20px">
+        <Flex
+          gap="20px"
+          marginTop="20px"
+          flexDirection={["column", "column", "column", "row"]}
+        >
           <Image
             flex="1"
-            height="7rem"
+            height={{ sm: "2rem", md: "5rem" }}
             src="https://drive.google.com/uc?id=1ZeaUI_0OWkEYM7anqFGbcJl4fNRkHsa5&export=media"
             alt="Banner"
             objectFit="cover"
           />
           <Image
             flex="1"
-            height="7rem"
+            height={{ sm: "2rem", md: "5rem" }}
             src="https://drive.google.com/uc?id=1g1UY_e2uPPwA3n3QOohHB0hrGB0K_mtd&export=media"
             alt="Banner"
             objectFit="cover"

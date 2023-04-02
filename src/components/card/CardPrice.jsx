@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { Facebook, Whatsapp, Twitter } from "../button";
 
-function CardPrice() {
+function CardPrice({ detail }) {
   return (
     <Box
       bgColor="#f5f5f5"
@@ -24,28 +24,28 @@ function CardPrice() {
       <Flex justify="space-between">
         <Flex flexDirection="column">
           <Heading size="sm" color="#6298c6">
-            JAWA TENGAH
+            {detail.region.province_name}
           </Heading>
           <Text color="#6298c6" fontSize="14px" marginTop="10px">
-            REMBANG
+            {detail.region.name}
           </Text>
           <Text fontSize="14px" marginTop="-5px">
             size 100:
           </Text>
           <Heading size="md" marginTop="10px">
-            Rp 53.000
+            {detail.currency.symbol} {detail.size_100}
           </Heading>
         </Flex>
         <Flex flexDirection="column" alignItems="end">
           <Text fontSize="sm" marginBottom="10px">
-            30 Maret 2023
+            {detail.date}
           </Text>
           <Text fontSize="sm">Supplier:</Text>
           <Text fontSize="sm" fontWeight="bold" marginTop="-5px">
-            aas*******lm
+            {detail.creator.name}
           </Text>
           <Text fontSize="sm" marginTop="10px">
-            +6289xxxxxx
+            {detail.creator.phone}
           </Text>
         </Flex>
       </Flex>
