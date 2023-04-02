@@ -1,4 +1,5 @@
 import { HStack, Select, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import { data } from "../../data/regions.json";
 
 function Filter() {
@@ -6,6 +7,13 @@ function Filter() {
     20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180,
     190, 200,
   ];
+
+  const [size, setSize] = useState();
+
+  const selectSize = (e) => {
+    console.log(e.target.value);
+    setSize(e.target.value);
+  };
 
   return (
     <HStack
@@ -24,7 +32,11 @@ function Filter() {
           </option>
         ))}
       </Select>
-      <Select placeholder="Pilih size udang" width="52">
+      <Select
+        placeholder="Pilih size udang"
+        width="52"
+        onClick={(e) => selectSize(e)}
+      >
         {sizes.map((item, index) => (
           <option key={index} value={item}>
             Size {item}

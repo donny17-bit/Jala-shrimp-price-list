@@ -20,19 +20,18 @@ import InfiniteScroll from "react-infinite-scroll-component";
 // import axiosInstance from "../../utils/axios";
 import axios from "axios";
 
-function PriceListTable() {
+function PriceListTable({ size }) {
   const [dataSet, setDataSet] = useState({
     data: [],
     links: {},
     meta: {},
   });
   const [data, setData] = useState([]);
-  const size = 100;
 
   const getData = async () => {
     try {
       const response = await axios.get(
-        `https://app.jala.tech/api/shrimp_prices?not_null=size_100&with=country%2Cregion%2Ccurrency&appends=slug%2Cshrimp_price_per_week_region_id&page=1`
+        `https://app.jala.tech/api/shrimp_prices?not_null=size_${size}&with=country%2Cregion%2Ccurrency&appends=slug%2Cshrimp_price_per_week_region_id&page=1`
       );
       setDataSet(response.data);
       setData(response.data.data);
@@ -51,9 +50,74 @@ function PriceListTable() {
     }
   };
 
+  // change size price not work
+  const sizePrice = (item, size) => {
+    switch (size) {
+      case 20:
+        return item.size_20;
+        break;
+      case 30:
+        return item.size_30;
+        break;
+      case 40:
+        return item.size_40;
+        break;
+      case 50:
+        return item.size_50;
+        break;
+      case 60:
+        return item.size_60;
+        break;
+      case 70:
+        return item.size_70;
+        break;
+      case 80:
+        return item.size_80;
+        break;
+      case 90:
+        return item.size_90;
+        break;
+      case 100:
+        return item.size_100;
+        break;
+      case 110:
+        return item.size_110;
+        break;
+      case 120:
+        return item.size_120;
+        break;
+      case 130:
+        return item.size_130;
+        break;
+      case 140:
+        return item.size_140;
+        break;
+      case 150:
+        return item.size_150;
+        break;
+      case 160:
+        return item.size_160;
+        break;
+      case 170:
+        return item.size_170;
+        break;
+      case 180:
+        return item.size_180;
+        break;
+      case 190:
+        return item.size_190;
+        break;
+      case 200:
+        return item.size_200;
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     getData();
-  }, []);
+  }, [size]);
 
   return (
     <Box
@@ -142,7 +206,12 @@ function PriceListTable() {
                     <Text>{item.region.name}</Text>
                   </Td>
                   <Td>{item.creator.name}</Td>
-                  <Td>Rp {item.size_100}</Td>
+                  <Td>
+                    {item.currency.symbol}{" "}
+                    {() => {
+                      sizePrice(item, size);
+                    }}
+                  </Td>
                   <Td>
                     <Link to={"detail"}>
                       <Button
