@@ -31,7 +31,7 @@ function DetailPrice() {
         city={detail.region.name}
       />
       <Container backgroundColor="gray.100" maxW="full" paddingY="15px">
-        <Flex gap="20px">
+        <Flex gap="20px" flexDirection={["column", "column", "row"]}>
           <DetailPriceTable detail={detail} />
           <PriceHistory />
         </Flex>

@@ -84,7 +84,12 @@ function DetailPriceTable({ detail }) {
             &nbsp;
             {detail.date.slice(0, 4)}
           </Text>
-          <Text fontSize="sm" fontWeight="bold" color="gray.600">
+          <Text
+            fontSize="sm"
+            fontWeight="bold"
+            color="gray.600"
+            w={["140px", "10rem"]}
+          >
             Udang Vannamei (Penaeus Vannamei)
           </Text>
         </VStack>
