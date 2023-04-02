@@ -11,12 +11,36 @@ import {
   Th,
   Td,
   TableContainer,
-  Heading,
   HStack,
 } from "@chakra-ui/react";
 import { Facebook, Twitter, Whatsapp, Messenger } from "../button/index";
 
-function DetailPriceTable() {
+function DetailPriceTable({ detail }) {
+  const share = Math.round(Math.random() * 10);
+  const keys = Object.keys(detail).filter((word) => word.match("size"));
+  let table = [];
+
+  for (let element of keys) {
+    if (detail[element] === null) {
+      continue;
+    }
+    table.push(
+      <Tr borderTop="2px" borderTopColor="gray.300" key={element}>
+        <Td fontSize="sm" color="gray.600" fontWeight="bold">
+          {element[0].toUpperCase() +
+            element.slice(1, 4) +
+            " " +
+            element.slice(5)}
+        </Td>
+        <Td fontSize="sm" color="gray.600">
+          Rp {detail[element]}
+        </Td>
+        <Td></Td>
+        <Td></Td>
+      </Tr>
+    );
+  }
+
   return (
     <Box
       flex="1.5"
@@ -33,7 +57,32 @@ function DetailPriceTable() {
       <Flex flexDirection={"row"} padding="15px">
         <VStack flex="2" alignItems="start" spacing="5px">
           <Text fontSize="sm" color="gray.600">
-            27 Oktober 2021
+            {detail.date.slice(8)}&nbsp;
+            {detail.date.slice(5, 7) === "01"
+              ? "Januari"
+              : detail.date.slice(5, 7) === "02"
+              ? "Februari"
+              : detail.date.slice(5, 7) === "03"
+              ? "Maret"
+              : detail.date.slice(5, 7) === "04"
+              ? "April"
+              : detail.date.slice(5, 7) === "05"
+              ? "Mei"
+              : detail.date.slice(5, 7) === "06"
+              ? "Juni"
+              : detail.date.slice(5, 7) === "07"
+              ? "Juli"
+              : detail.date.slice(5, 7) === "08"
+              ? "Agustus"
+              : detail.date.slice(5, 7) === "09"
+              ? "September"
+              : detail.date.slice(5, 7) === "10"
+              ? "Oktober"
+              : detail.date.slice(5, 7) === "11"
+              ? "November"
+              : "Desember"}
+            &nbsp;
+            {detail.date.slice(0, 4)}
           </Text>
           <Text fontSize="sm" fontWeight="bold" color="gray.600">
             Udang Vannamei (Penaeus Vannamei)
@@ -44,7 +93,7 @@ function DetailPriceTable() {
             Supplier:
           </Text>
           <Text fontSize="sm" fontWeight="bold" color="gray.600">
-            a****jjasdl
+            {detail.creator.name}
           </Text>
         </VStack>
         <VStack flex="1" alignItems="start" spacing="5px">
@@ -52,14 +101,13 @@ function DetailPriceTable() {
             Kontak
           </Text>
           <Text fontSize="sm" color="gray.600">
-            +628******
+            {detail.creator.phone}
           </Text>
           <Link
             color="blue"
             fontSize="sm"
             textDecoration="underline"
             fontWeight="semibold"
-            href="/"
           >
             Lihat Kontak
           </Link>
@@ -75,38 +123,7 @@ function DetailPriceTable() {
               <Th></Th>
             </Tr>
           </Thead>
-          <Tbody>
-            <Tr borderTop="2px" borderTopColor="gray.300">
-              <Td fontSize="sm" color="gray.600" fontWeight="bold">
-                Size 30
-              </Td>
-              <Td fontSize="sm" color="gray.600">
-                Rp 90.000
-              </Td>
-              <Td></Td>
-              <Td></Td>
-            </Tr>
-            <Tr borderTop="2px" borderTopColor="gray.300">
-              <Td fontSize="sm" color="gray.600" fontWeight="bold">
-                Size 30
-              </Td>
-              <Td fontSize="sm" color="gray.600">
-                Rp 90.000
-              </Td>
-              <Td></Td>
-              <Td></Td>
-            </Tr>
-            <Tr borderTop="2px" borderTopColor="gray.300">
-              <Td fontSize="sm" color="gray.600" fontWeight="bold">
-                Size 30
-              </Td>
-              <Td fontSize="sm" color="gray.600">
-                Rp 90.000
-              </Td>
-              <Td></Td>
-              <Td></Td>
-            </Tr>
-          </Tbody>
+          <Tbody>{table}</Tbody>
         </Table>
       </TableContainer>
       <Flex justify="space-between" padding="15px">
@@ -122,7 +139,7 @@ function DetailPriceTable() {
         >
           <Flex flexDirection="column">
             <Text fontSize="md" color="gray.600" textAlign="center">
-              1
+              {share}
             </Text>
             <Text fontSize="xs" color="gray.500">
               Shares
