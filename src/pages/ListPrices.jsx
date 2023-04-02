@@ -11,7 +11,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { getPriceList } from "../store/action/priceList";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import Filter from "../components/layout/Filter";
 import CardTrend from "../components/card/CardPriceTrend";
 import PriceListTable from "../components/table/PriceListTable";
@@ -106,19 +106,19 @@ function ListPrices() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [size, setSize] = useState(100);
 
-  const price = useSelector((state) => state.priceList);
-  const dispatch = useDispatch();
-  console.log(!price);
+  // const price = useSelector((state) => state.priceList);
+  // const dispatch = useDispatch();
 
   let options = [];
 
   const getDataPrice = async () => {
     try {
-      // const response = await axios.get(
-      //   `https://app.jala.tech/api/shrimp_prices?not_null=size_${size}&with=country%2Cregion%2Ccurrency&appends=slug%2Cshrimp_price_per_week_region_id&page=1`
-      // );
-      const response = await dispatch(getPriceList(size, 1));
+      const response = await axios.get(
+        `https://app.jala.tech/api/shrimp_prices?not_null=size_${size}&with=country%2Cregion%2Ccurrency&appends=slug%2Cshrimp_price_per_week_region_id&page=1`
+      );
+      // const response = await dispatch(getPriceList(size, 1));
       setDataPrice(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -273,19 +273,19 @@ function ListPrices() {
               // border="2px"
               justify="space-between"
             >
-              {price ? (
+              {dataPrice ? (
                 <>
                   <WrapItem>
-                    <CardTrend data={price.data[0]} size={size} />
+                    <CardTrend data={dataPrice.data[0]} size={size} />
                   </WrapItem>
                   <WrapItem>
-                    <CardTrend data={price.data[3]} size={size} />
+                    <CardTrend data={dataPrice.data[3]} size={size} />
                   </WrapItem>
                   <WrapItem>
-                    <CardTrend data={price.data[14]} size={size} />
+                    <CardTrend data={dataPrice.data[14]} size={size} />
                   </WrapItem>
                   <WrapItem>
-                    <CardTrend data={price.data[7]} size={size} />
+                    <CardTrend data={dataPrice.data[7]} size={size} />
                   </WrapItem>
                 </>
               ) : (

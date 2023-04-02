@@ -1,16 +1,16 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-function DetailHeader() {
+function DetailHeader({ province, city }) {
   return (
     <>
       <Flex w="full" bgColor="white" justify="space-between" padding="15px">
         <Flex flexDirection="column">
           <Text fontSize="lg" fontWeight="medium" color="blue">
-            JAWA TENGAH
+            {province}
           </Text>
           <Text fontSize="sm" color="gray.600">
-            KEBUMEN
+            {city}
           </Text>
         </Flex>
         <Link to={"/"}>

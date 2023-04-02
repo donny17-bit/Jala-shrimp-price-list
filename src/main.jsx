@@ -18,13 +18,13 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  <Provider store={Store.store}>
-    <PersistGate loading={null} persistor={Store.persistor}>
-      <ChakraProvider>
-        <RouterProvider router={router} />
-      </ChakraProvider>
-    </PersistGate>
-  </Provider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    {/* <Provider store={Store.store}> */}
+    {/* <PersistGate loading={null} persistor={Store.persistor}> */}
+    <ChakraProvider>
+      <RouterProvider router={router} />
+    </ChakraProvider>
+    {/* </PersistGate> */}
+    {/* </Provider> */}
+  </React.StrictMode>
 );

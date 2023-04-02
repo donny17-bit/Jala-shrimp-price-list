@@ -15,11 +15,20 @@ import Footer from "../components/layout/Footer";
 import DetailPriceTable from "../components/table/DetailPriceTable";
 import PriceHistory from "../components/card/PriceHistory";
 import CardPrice from "../components/card/CardPrice";
+import { useLocation } from "react-router-dom";
 
 function DetailPrice() {
+  const location = useLocation();
+
+  const detail = location.state.item;
+  const otherData = location.state.data;
+
   return (
     <>
-      <DetailHeader />
+      <DetailHeader
+        province={detail.region.province_name}
+        city={detail.region.name}
+      />
       <Container backgroundColor="gray.100" maxW="full" paddingY="15px">
         <Flex gap="20px">
           <DetailPriceTable />

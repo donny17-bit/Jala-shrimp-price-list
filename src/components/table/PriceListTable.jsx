@@ -14,19 +14,26 @@ import {
   HStack,
   getSlideTransition,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Facebook, Twitter, Whatsapp } from "../button/index";
 import InfiniteScroll from "react-infinite-scroll-component";
 // import axiosInstance from "../../utils/axios";
 import axios from "axios";
 
 function PriceListTable({ size }) {
+  const navigate = useNavigate();
   const [dataSet, setDataSet] = useState({
     data: [],
     links: {},
     meta: {},
   });
   const [data, setData] = useState([]);
+
+  const openDetail = (item, data) => {
+    navigate("detail", {
+      state: { item, data: data },
+    });
+  };
 
   const getData = async () => {
     try {
@@ -209,19 +216,20 @@ function PriceListTable({ size }) {
                     {item.currency.symbol} {sizePrice(item, size)}
                   </Td>
                   <Td>
-                    <Link to={"detail"}>
-                      <Button
-                        bgColor="#1b72d3"
-                        color="white"
-                        fontSize="sm"
-                        height="8"
-                        borderRadius="3px"
-                        _hover={{ bgColor: "#1b72d3" }}
-                        _active={{ bgColor: "#1767bf" }}
-                      >
-                        LIHAT DETAIL
-                      </Button>
-                    </Link>
+                    {/* <Link to={"detail"}> */}
+                    <Button
+                      bgColor="#1b72d3"
+                      color="white"
+                      fontSize="sm"
+                      height="8"
+                      borderRadius="3px"
+                      _hover={{ bgColor: "#1b72d3" }}
+                      _active={{ bgColor: "#1767bf" }}
+                      onClick={() => openDetail(item, data)}
+                    >
+                      LIHAT DETAIL
+                    </Button>
+                    {/* </Link> */}
                   </Td>
                   <Td>
                     <HStack>

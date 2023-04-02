@@ -8,15 +8,11 @@ import {
   Chart,
   Filler,
 } from "chart.js";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 function CardPriceTrend({ data, size }) {
-  const price = useSelector((state) => state.priceList);
+  // const price = useSelector((state) => state.priceList);
 
-  // console.log(price);
-
-  console.log(data);
-  // console.log(data.shrimp_price_per_week_region_id);
   Chart.register(Filler);
   Chart.register(CategoryScale);
   Chart.register(LinearScale);
