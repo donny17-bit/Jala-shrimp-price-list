@@ -50,7 +50,6 @@ function PriceListTable({ size }) {
     }
   };
 
-  // change size price not work
   const sizePrice = (item, size) => {
     switch (size) {
       case 20:
@@ -207,10 +206,7 @@ function PriceListTable({ size }) {
                   </Td>
                   <Td>{item.creator.name}</Td>
                   <Td>
-                    {item.currency.symbol}{" "}
-                    {() => {
-                      sizePrice(item, size);
-                    }}
+                    {item.currency.symbol} {sizePrice(item, size)}
                   </Td>
                   <Td>
                     <Link to={"detail"}>

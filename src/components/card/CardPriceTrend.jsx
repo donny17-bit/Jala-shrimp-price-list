@@ -8,26 +8,105 @@ import {
   Chart,
   Filler,
 } from "chart.js";
+import { useDispatch, useSelector } from "react-redux";
 
-function CardPriceTrend() {
+function CardPriceTrend({ data, size }) {
+  const price = useSelector((state) => state.priceList);
+
+  // console.log(price);
+
+  console.log(data);
+  // console.log(data.shrimp_price_per_week_region_id);
   Chart.register(Filler);
   Chart.register(CategoryScale);
   Chart.register(LinearScale);
   Chart.register(PointElement);
   Chart.register(LineElement);
 
+  const sizePrice = (size) => {
+    switch (size) {
+      case 20:
+        return data.size_20;
+        break;
+      case 30:
+        return data.size_30;
+        break;
+      case 40:
+        return data.size_40;
+        break;
+      case 50:
+        return data.size_50;
+        break;
+      case 60:
+        return data.size_60;
+        break;
+      case 70:
+        return data.size_70;
+        break;
+      case 80:
+        return data.size_80;
+        break;
+      case 90:
+        return data.size_90;
+        break;
+      case 100:
+        return data.size_100;
+        break;
+      case 110:
+        return data.size_110;
+        break;
+      case 120:
+        return data.size_120;
+        break;
+      case 130:
+        return data.size_130;
+        break;
+      case 140:
+        return data.size_140;
+        break;
+      case 150:
+        return data.size_150;
+        break;
+      case 160:
+        return data.size_160;
+        break;
+      case 170:
+        return data.size_170;
+        break;
+      case 180:
+        return data.size_180;
+        break;
+      case 190:
+        return data.size_190;
+        break;
+      case 200:
+        return data.size_200;
+        break;
+      default:
+        break;
+    }
+  };
+
   const options = {
     responsive: true,
   };
 
-  const dataSet1 = {
-    labels: ["Jun", "Jul", "Aug"],
+  const dataSet = {
+    labels: ["Jun", "Jul", "Aug", "Sep", "per", "asd"],
     datasets: [
       {
         fill: true,
         id: 1,
         label: "",
-        data: [5, 6, 7],
+        data: [
+          data.shrimp_price_per_week_region_id.avg_size_20,
+          data.shrimp_price_per_week_region_id.avg_size_30,
+          data.shrimp_price_per_week_region_id.avg_size_40,
+          data.shrimp_price_per_week_region_id.avg_size_90,
+          data.shrimp_price_per_week_region_id.avg_size_60,
+          data.shrimp_price_per_week_region_id.avg_size_70,
+          data.shrimp_price_per_week_region_id.avg_size_80,
+        ],
         borderColor: "#35e3a7",
         backgroundColor: "#8cefcd",
       },
@@ -48,7 +127,7 @@ function CardPriceTrend() {
     >
       <Flex flexDirection="column">
         <Text color={"gray.600"} fontWeight="semibold" fontSize={"md"}>
-          Lampung
+          {data.region.name}
         </Text>
         <Text
           color={"gray.600"}
@@ -56,7 +135,7 @@ function CardPriceTrend() {
           fontSize="smaller"
           marginTop="3px"
         >
-          Rp 52.000
+          {data.currency.symbol} {sizePrice(size)}
         </Text>
         <Text
           color={"gray.600"}
@@ -69,7 +148,7 @@ function CardPriceTrend() {
 
         <Line
           datasetIdKey="id"
-          data={dataSet1}
+          data={dataSet}
           options={options}
           // options={{ maintainAspectRatio: false }}
           // width={100}
