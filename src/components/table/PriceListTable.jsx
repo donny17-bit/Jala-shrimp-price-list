@@ -12,7 +12,6 @@ import {
   Td,
   TableContainer,
   HStack,
-  getSlideTransition,
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Facebook, Twitter, Whatsapp } from "../button/index";
@@ -145,6 +144,9 @@ function PriceListTable({ size }) {
           backgroundColor="blue.400"
           color="white"
           fontSize="sm"
+          onClick={() => {
+            navigate("/maps");
+          }}
         >
           TAMBAHKAN HARGA
         </Button>

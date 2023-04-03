@@ -8,16 +8,19 @@ import {
   Chart,
   Filler,
 } from "chart.js";
-// import { useDispatch, useSelector } from "react-redux";
 
 function CardPriceTrend({ data, size }) {
-  // const price = useSelector((state) => state.priceList);
-
   Chart.register(Filler);
   Chart.register(CategoryScale);
   Chart.register(LinearScale);
   Chart.register(PointElement);
   Chart.register(LineElement);
+
+  let dateNow = new Date(data.date);
+  dateNow = dateNow.toDateString().split(" ");
+  let dateBefore = new Date(data.date);
+  dateBefore.setDate(dateBefore.getDate() - 7);
+  dateBefore = dateBefore.toDateString().split(" ");
 
   const sizePrice = (size) => {
     switch (size) {
@@ -105,22 +108,26 @@ function CardPriceTrend({ data, size }) {
     },
   };
 
+  // randomize price trend
+  const minPrice = data.shrimp_price_per_week_region_id.min_size_100 - 10000;
+  const maxPrice = data.shrimp_price_per_week_region_id.max_size_100;
+
+  let dataTrend = [];
+  for (let i = 0; i < 7; i++) {
+    const price = Math.floor(
+      Math.random() * (maxPrice - minPrice + 1) + minPrice
+    );
+    dataTrend.push(price);
+  }
+
   const dataSet = {
-    labels: ["Jun", "Jul", "Aug", "Sep", "per", "asd"],
+    labels: ["1", "2", "3", "4", "5", "6", "7"],
     datasets: [
       {
         fill: true,
         id: 1,
         label: "",
-        data: [
-          data.shrimp_price_per_week_region_id.avg_size_20,
-          data.shrimp_price_per_week_region_id.avg_size_30,
-          data.shrimp_price_per_week_region_id.avg_size_40,
-          data.shrimp_price_per_week_region_id.avg_size_90,
-          data.shrimp_price_per_week_region_id.avg_size_60,
-          data.shrimp_price_per_week_region_id.avg_size_70,
-          data.shrimp_price_per_week_region_id.avg_size_80,
-        ],
+        data: dataTrend,
         borderColor: "#35e3a7",
         backgroundColor: "#8cefcd",
       },
@@ -157,17 +164,10 @@ function CardPriceTrend({ data, size }) {
           fontSize="small"
           marginTop="5px"
         >
-          19 Feb - 26 Feb
+          {dateBefore[2]} {dateBefore[1]} - {dateNow[2]} {dateNow[1]}
         </Text>
 
-        <Line
-          datasetIdKey="id"
-          data={dataSet}
-          options={options}
-          // options={{ maintainAspectRatio: false }}
-          // width={100}
-          // height={50}
-        />
+        <Line datasetIdKey="id" data={dataSet} options={options} />
       </Flex>
     </Box>
   );
