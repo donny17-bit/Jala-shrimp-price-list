@@ -9,6 +9,7 @@ import {
   Wrap,
   WrapItem,
   HStack,
+  Center,
 } from "@chakra-ui/react";
 import { getPriceList } from "../store/action/priceList";
 // import { useDispatch, useSelector } from "react-redux";
@@ -162,161 +163,191 @@ function ListPrices() {
     );
   }, [region]);
 
-  return (
-    <>
-      {/* <Filter /> */}
-      <HStack
-        spacing="24px"
-        paddingX="15px"
-        paddingY="15px"
-        backgroundColor="white"
-      >
-        <Text fontSize="md" fontWeight="bold" color="gray.600">
-          Filter&nbsp;:
-        </Text>
-
-        <Select
-          placeholder="pilih lokasi"
-          defaultValue={selectedOption}
-          onChange={setSelectedOption}
-          options={options}
-          isSearchable={true}
-          className="w-1/3"
-          id="selectRegion"
+  if (dataPrice && dataRegion) {
+    return (
+      <>
+        {/* <Filter /> */}
+        <HStack
+          spacing="24px"
+          paddingX="15px"
+          paddingY="15px"
+          backgroundColor="white"
         >
-          <InfiniteScroll
-            dataLength={region.length}
-            next={getNextRegion}
-            hasMore={true}
-            hasChildren={true}
-            loader={<p>Loading...</p>}
-            scrollableTarget="selectRegion"
-          ></InfiniteScroll>
-        </Select>
+          <Text fontSize="md" fontWeight="bold" color="gray.600">
+            Filter&nbsp;:
+          </Text>
 
-        {/* <Select placeholder="Pilih Lokasi" width="xl" id="selectRegion">
-         
-          {region.map((item) => (
-            <option value={item.id} key={item.id}>
-              {item.name}
-            </option>
-          ))}
-          
-        </Select> */}
-        <Select
-          placeholder="Pilih size udang"
-          onChange={(e) => selectSize(e)}
-          defaultValue={size}
-          options={sizes}
-          className="w-1/4"
-          isSearchable={false}
-        />
-        <Select
-          placeholder="Pilih jenis udang"
-          onChange={() => console.log("vannamei")}
-          defaultValue={"vannamei"}
-          options={[{ value: "vannamei", label: "Vannamei" }]}
-          className="w-1/5"
-          isSearchable={false}
-        />
-      </HStack>
-      {/* filter */}
-      <Container backgroundColor="gray.100" maxW="full" paddingY="15px">
-        <Flex gap="20px">
-          <Image
-            flex="1"
-            height="7rem"
-            src="https://drive.google.com/uc?id=15_wFMILzgqt-NZ5A_lxqlonQVYSNjw2_&export=media"
-            alt="Banner"
-            objectFit="cover"
-          />
-          <Image
-            flex="1"
-            height="7rem"
-            src="https://drive.google.com/uc?id=1YIyOuyXFoJ5e6FFtRKnnX_iKUuRBk7nX&export=media"
-            alt="Banner"
-            objectFit="cover"
-          />
-        </Flex>
-        <Flex marginTop="20px" gap="20px">
-          <Box
-            flex="1.5"
-            // width="60%"
-            height="365px"
-            backgroundColor="white"
-            borderRadius="5px"
-            paddingY="10px"
-            border="1px"
-            borderColor="gray.200"
+          <Select
+            placeholder="pilih lokasi"
+            defaultValue={selectedOption}
+            onChange={setSelectedOption}
+            options={options}
+            isSearchable={true}
+            className="w-1/3"
+            id="selectRegion"
           >
-            <Text
-              color="gray.500"
-              fontSize="md"
-              fontWeight="medium"
-              paddingStart="15px"
-            >
-              Persebaran Harga Udang Size 100
-            </Text>
-          </Box>
-          <Flex flexDirection="column" flex="1">
-            <Text
-              color="gray.600"
-              fontWeight="bold"
-              fontSize="md"
-              marginBottom="10px"
-            >
-              Trend harga di berbagai daerah
-            </Text>
-            <Wrap
-              spacingX="0px"
-              spacingY="10px"
-              // border="2px"
-              justify="space-between"
-            >
-              {dataPrice ? (
-                <>
-                  <WrapItem>
-                    <CardTrend data={dataPrice.data[0]} size={size} />
-                  </WrapItem>
-                  <WrapItem>
-                    <CardTrend data={dataPrice.data[3]} size={size} />
-                  </WrapItem>
-                  <WrapItem>
-                    <CardTrend data={dataPrice.data[14]} size={size} />
-                  </WrapItem>
-                  <WrapItem>
-                    <CardTrend data={dataPrice.data[7]} size={size} />
-                  </WrapItem>
-                </>
-              ) : (
-                <></>
-              )}
-            </Wrap>
+            <InfiniteScroll
+              dataLength={region.length}
+              next={getNextRegion}
+              hasMore={true}
+              hasChildren={true}
+              loader={<p>Loading...</p>}
+              scrollableTarget="selectRegion"
+            ></InfiniteScroll>
+          </Select>
+
+          {/* <Select placeholder="Pilih Lokasi" width="xl" id="selectRegion">
+           
+            {region.map((item) => (
+              <option value={item.id} key={item.id}>
+                {item.name}
+              </option>
+            ))}
+            
+          </Select> */}
+          <Select
+            placeholder="Pilih size udang"
+            onChange={(e) => selectSize(e)}
+            defaultValue={size}
+            options={sizes}
+            className="w-1/4"
+            isSearchable={false}
+          />
+          <Select
+            placeholder="Pilih jenis udang"
+            onChange={() => console.log("vannamei")}
+            defaultValue={"vannamei"}
+            options={[{ value: "vannamei", label: "Vannamei" }]}
+            className="w-1/5"
+            isSearchable={false}
+          />
+        </HStack>
+        {/* filter */}
+        <Container backgroundColor="gray.100" maxW="full" paddingY="15px">
+          <Flex gap="20px">
+            <Image
+              flex="1"
+              height="7rem"
+              src="https://drive.google.com/uc?id=15_wFMILzgqt-NZ5A_lxqlonQVYSNjw2_&export=media"
+              alt="Banner"
+              objectFit="cover"
+            />
+            <Image
+              flex="1"
+              height="7rem"
+              src="https://drive.google.com/uc?id=1YIyOuyXFoJ5e6FFtRKnnX_iKUuRBk7nX&export=media"
+              alt="Banner"
+              objectFit="cover"
+            />
           </Flex>
-        </Flex>
-        <Flex gap="20px" marginTop="20px">
-          <Image
-            flex="1"
-            height="7rem"
-            src="https://drive.google.com/uc?id=1ZeaUI_0OWkEYM7anqFGbcJl4fNRkHsa5&export=media"
-            alt="Banner"
-            objectFit="cover"
-          />
-          <Image
-            flex="1"
-            height="7rem"
-            src="https://drive.google.com/uc?id=1g1UY_e2uPPwA3n3QOohHB0hrGB0K_mtd&export=media"
-            alt="Banner"
-            objectFit="cover"
-          />
-        </Flex>
-        <Box marginTop="20px">
-          <PriceListTable size={size} />
-        </Box>
-      </Container>
-      <Footer />
-    </>
-  );
+          <Flex marginTop="20px" gap="20px">
+            <Box
+              flex="1.5"
+              // width="60%"
+              // height="365px"
+              backgroundColor="white"
+              borderRadius="5px"
+              paddingY="10px"
+              border="1px"
+              borderColor="gray.200"
+            >
+              <Text
+                color="gray.500"
+                fontSize="md"
+                fontWeight="medium"
+                paddingStart="15px"
+              >
+                Persebaran Harga Udang Size 100
+              </Text>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2894115.3889098424!2d110.43965071674377!3d-7.450174956058436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1680512283491!5m2!1sid!2sid"
+                width="100%"
+                height="350"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                className="mt-4"
+              ></iframe>
+              <Center marginY="10px">
+                <Flex gap="10px">
+                  <Center w="25px" h="25px" bg="#676963"></Center>
+                  <Text fontSize="sm" color="gray.600">
+                    &gt; 1 Bulan
+                  </Text>
+                  <Center w="25px" h="25px" bg="#133878"></Center>
+                  <Text fontSize="sm" color="gray.600">
+                    &gt; 1 Minggu
+                  </Text>
+                  <Center w="25px" h="25px" bg="#1b77df"></Center>
+                  <Text fontSize="sm" color="gray.600">
+                    1 Baru
+                  </Text>
+                </Flex>
+              </Center>
+            </Box>
+            <Flex flexDirection="column" flex="1">
+              <Text
+                color="gray.600"
+                fontWeight="bold"
+                fontSize="md"
+                marginBottom="10px"
+              >
+                Trend harga di berbagai daerah
+              </Text>
+              <Wrap
+                spacingX="0px"
+                spacingY="10px"
+                // border="2px"
+                justify="space-between"
+              >
+                {dataPrice ? (
+                  <>
+                    <WrapItem>
+                      <CardTrend data={dataPrice.data[5]} size={size} />
+                    </WrapItem>
+                    <WrapItem>
+                      <CardTrend data={dataPrice.data[3]} size={size} />
+                    </WrapItem>
+                    <WrapItem>
+                      <CardTrend data={dataPrice.data[14]} size={size} />
+                    </WrapItem>
+                    <WrapItem>
+                      <CardTrend data={dataPrice.data[7]} size={size} />
+                    </WrapItem>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </Wrap>
+            </Flex>
+          </Flex>
+          <Flex gap="20px" marginTop="20px">
+            <Image
+              flex="1"
+              height="7rem"
+              src="https://drive.google.com/uc?id=1ZeaUI_0OWkEYM7anqFGbcJl4fNRkHsa5&export=media"
+              alt="Banner"
+              objectFit="cover"
+            />
+            <Image
+              flex="1"
+              height="7rem"
+              src="https://drive.google.com/uc?id=1g1UY_e2uPPwA3n3QOohHB0hrGB0K_mtd&export=media"
+              alt="Banner"
+              objectFit="cover"
+            />
+          </Flex>
+          <Box marginTop="20px">
+            <PriceListTable size={size} />
+          </Box>
+        </Container>
+        <Footer />
+      </>
+    );
+  } else {
+    <></>;
+  }
 }
 
 export default ListPrices;
