@@ -137,8 +137,8 @@ function CardPriceTrend({ data, size }) {
   return (
     <Box
       paddingX="15px"
-      width="15.7rem"
-      height="12rem"
+      width={{ md: "full", lg: "12rem", xl: "15.7rem" }}
+      height={{ sm: "12rem", md: "15rem", lg: "11rem", xl: "12rem" }}
       backgroundColor="white"
       borderRadius="5px"
       border="1px"
