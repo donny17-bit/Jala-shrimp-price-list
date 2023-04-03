@@ -8,8 +8,17 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Facebook, Whatsapp, Twitter } from "../button";
+import { Link, useNavigate } from "react-router-dom";
 
-function CardPrice({ detail }) {
+function CardPrice({ detail, otherData }) {
+  const navigate = useNavigate();
+
+  const openDetail = (item, data) => {
+    navigate("/detail", {
+      state: { item, data: data },
+    });
+  };
+
   return (
     <Box
       bgColor="#f5f5f5"
@@ -57,6 +66,7 @@ function CardPrice({ detail }) {
           h="35px"
           borderRadius="3px"
           _hover={{ bgColor: "#004492" }}
+          onClick={() => openDetail(detail, otherData)}
         >
           LIHAT DETAIL
         </Button>

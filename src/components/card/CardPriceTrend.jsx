@@ -85,6 +85,24 @@ function CardPriceTrend({ data, size }) {
 
   const options = {
     responsive: true,
+    scales: {
+      y: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          display: false,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          display: false,
+        },
+      },
+    },
   };
 
   const dataSet = {

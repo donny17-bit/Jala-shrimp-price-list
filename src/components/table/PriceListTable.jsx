@@ -30,7 +30,7 @@ function PriceListTable({ size }) {
   const [data, setData] = useState([]);
 
   const openDetail = (item, data) => {
-    navigate("detail", {
+    navigate("/detail", {
       state: { item, data: data },
     });
   };
