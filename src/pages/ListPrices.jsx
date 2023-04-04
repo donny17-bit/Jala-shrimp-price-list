@@ -13,8 +13,7 @@ import {
   Center,
   Button,
 } from "@chakra-ui/react";
-import { getPriceList } from "../store/action/priceList";
-// import { useDispatch, useSelector } from "react-redux";
+
 import Filter from "../components/layout/Filter";
 import CardTrend from "../components/card/CardPriceTrend";
 import CardPrice from "../components/card/CardPrice";
