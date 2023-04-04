@@ -176,7 +176,7 @@ function PriceHistory({ detail }) {
 
   return (
     <Box
-      flex="1"
+      width={{ base: "full", lg: "40%" }}
       backgroundColor="white"
       borderRadius="5px"
       border="1px"

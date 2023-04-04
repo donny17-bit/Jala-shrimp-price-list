@@ -30,7 +30,10 @@ function DetailPrice() {
         city={detail.region.name}
       />
       <Container backgroundColor="gray.100" maxW="full" paddingY="15px">
-        <Flex gap="20px" flexDirection={["column", "column", "row"]}>
+        <Flex
+          gap="20px"
+          flexDirection={{ base: "column", md: "column", lg: "row" }}
+        >
           <DetailPriceTable detail={detail} />
           <PriceHistory detail={detail} />
         </Flex>

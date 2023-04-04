@@ -43,7 +43,7 @@ function DetailPriceTable({ detail }) {
 
   return (
     <Box
-      flex="1.5"
+      width={{ base: "full", lg: "60%" }}
       backgroundColor="white"
       height="fit-content"
       borderRadius="5px"
