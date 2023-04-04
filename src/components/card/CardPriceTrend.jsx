@@ -88,22 +88,13 @@ function CardPriceTrend({ data, size }) {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-        },
+        display: false,
       },
       x: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-        },
+        display: false,
       },
     },
   };
@@ -137,8 +128,7 @@ function CardPriceTrend({ data, size }) {
   return (
     <Box
       paddingX="15px"
-      width={{ md: "full", lg: "12rem", xl: "15.7rem" }}
-      height={{ sm: "12rem", md: "15rem", lg: "11rem", xl: "12rem" }}
+      width={{ sm: "full", md: "full", lg: "12rem", xl: "15.7rem" }}
       backgroundColor="white"
       borderRadius="5px"
       border="1px"
@@ -166,8 +156,12 @@ function CardPriceTrend({ data, size }) {
         >
           {dateBefore[2]} {dateBefore[1]} - {dateNow[2]} {dateNow[1]}
         </Text>
-
-        <Line datasetIdKey="id" data={dataSet} options={options} />
+        <Box
+          width={{ sm: "15rem", md: "full", lg: "10rem", xl: "14.7rem" }}
+          height={{ md: "9rem", lg: "5rem", xl: "5rem" }}
+        >
+          <Line datasetIdKey="id" data={dataSet} options={options} />
+        </Box>
       </Flex>
     </Box>
   );

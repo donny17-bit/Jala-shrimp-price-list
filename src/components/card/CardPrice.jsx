@@ -23,12 +23,13 @@ function CardPrice({ detail, otherData }) {
     <Box
       bgColor="#f5f5f5"
       minW="20rem"
-      w="20rem"
+      w="full"
       h="15rem"
       border="1px"
       borderColor="gray.300"
       borderRadius="5px"
       padding="10px"
+      marginBottom="15px"
     >
       <Flex justify="space-between">
         <Flex flexDirection="column">
@@ -58,12 +59,13 @@ function CardPrice({ detail, otherData }) {
           </Text>
         </Flex>
       </Flex>
-      <Flex paddingY="20px" justify="space-evenly">
+      <Flex paddingY="20px" gap="20px">
         <Button
           bgColor="#007ff5"
           color="white"
           fontSize="sm"
           h="35px"
+          w="full"
           borderRadius="3px"
           _hover={{ bgColor: "#004492" }}
           onClick={() => openDetail(detail, otherData)}
@@ -75,6 +77,7 @@ function CardPrice({ detail, otherData }) {
           borderColor="#007ff5"
           fontSize="sm"
           h="35px"
+          w="full"
           borderRadius="3px"
           color="#007ff5"
           bgColor="#f5f5f5"

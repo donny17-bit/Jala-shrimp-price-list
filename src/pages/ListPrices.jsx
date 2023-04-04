@@ -10,11 +10,13 @@ import {
   WrapItem,
   HStack,
   Center,
+  Button,
 } from "@chakra-ui/react";
 import { getPriceList } from "../store/action/priceList";
 // import { useDispatch, useSelector } from "react-redux";
 import Filter from "../components/layout/Filter";
 import CardTrend from "../components/card/CardPriceTrend";
+import CardPrice from "../components/card/CardPrice";
 import PriceListTable from "../components/table/PriceListTable";
 import Footer from "../components/layout/Footer";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -106,6 +108,7 @@ function ListPrices() {
   const [dataPrice, setDataPrice] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [size, setSize] = useState(100);
+  const [dataPriceList, setDataPriceList] = useState([]);
 
   // const price = useSelector((state) => state.priceList);
   // const dispatch = useDispatch();
@@ -117,9 +120,19 @@ function ListPrices() {
       const response = await axios.get(
         `https://app.jala.tech/api/shrimp_prices?not_null=size_${size}&with=country%2Cregion%2Ccurrency&appends=slug%2Cshrimp_price_per_week_region_id&page=1`
       );
+      setDataPrice(response.data);
+      setDataPriceList(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getDataPriceNext = async () => {
+    try {
+      const response = await axios.get(dataPrice.links.next);
       // const response = await dispatch(getPriceList(size, 1));
       setDataPrice(response.data);
-      console.log(response.data);
+      setDataPriceList([...dataPriceList, ...response.data.data]);
     } catch (error) {
       console.error(error);
     }
@@ -176,7 +189,6 @@ function ListPrices() {
           <Text fontSize="md" fontWeight="bold" color="gray.600">
             Filter&nbsp;:
           </Text>
-
           <Select
             placeholder="pilih lokasi"
             defaultValue={selectedOption}
@@ -195,16 +207,6 @@ function ListPrices() {
               scrollableTarget="selectRegion"
             ></InfiniteScroll>
           </Select>
-
-          {/* <Select placeholder="Pilih Lokasi" width="xl" id="selectRegion">
-           
-            {region.map((item) => (
-              <option value={item.id} key={item.id}>
-                {item.name}
-              </option>
-            ))}
-            
-          </Select> */}
           <Select
             placeholder="Pilih size udang"
             onChange={(e) => selectSize(e)}
@@ -276,9 +278,9 @@ function ListPrices() {
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2894115.3889098424!2d110.43965071674377!3d-7.450174956058436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1680512283491!5m2!1sid!2sid"
                 width="100%"
                 height="350"
-                allowfullscreen=""
+                allowFullScreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade"
                 className="mt-4"
               ></iframe>
               <Center marginY="10px">
@@ -355,8 +357,61 @@ function ListPrices() {
               objectFit="cover"
             />
           </Flex>
-          <Box marginTop="20px">
+
+          <Box
+            marginTop="20px"
+            border="1px"
+            backgroundColor="white"
+            width="full"
+            // height="30rem"
+            borderRadius="5px"
+            borderColor="gray.200"
+          >
+            <Flex justify="space-between" marginX="20px" marginY="15px">
+              <Text fontSize="md" color="gray.600" fontWeight="medium">
+                List Harga Udang
+              </Text>
+              <Button
+                width="fit-content"
+                height="fit-content"
+                padding="5px"
+                backgroundColor="blue.400"
+                color="white"
+                fontSize="sm"
+                onClick={() => {
+                  navigate("/maps");
+                }}
+              >
+                TAMBAHKAN HARGA
+              </Button>
+            </Flex>
+            <hr></hr>
             <PriceListTable size={size} />
+            <Flex
+              flexDirection="column"
+              padding="20px"
+              height="40rem"
+              overflow="scroll"
+              gap="10px"
+              display={{ sm: "flex", lg: "none" }}
+              id="cardList"
+            >
+              <InfiniteScroll
+                dataLength={dataPriceList.length}
+                next={getDataPriceNext}
+                hasMore={true}
+                loader={<p>Loading...</p>}
+                scrollableTarget="cardList"
+              >
+                {dataPriceList.map((item) => (
+                  <CardPrice
+                    detail={item}
+                    otherData={dataPriceList}
+                    key={item.id}
+                  />
+                ))}
+              </InfiniteScroll>
+            </Flex>
           </Box>
         </Container>
         <Footer />

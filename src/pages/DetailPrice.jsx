@@ -22,7 +22,6 @@ function DetailPrice() {
 
   const detail = location.state.item;
   const otherData = location.state.data;
-  console.log(detail);
 
   return (
     <>

@@ -125,128 +125,101 @@ function PriceListTable({ size }) {
   }, [size]);
 
   return (
-    <Box
-      border="1px"
-      backgroundColor="white"
-      width="full"
-      height="30rem"
-      borderRadius="5px"
-      borderColor="gray.200"
+    <TableContainer
+      paddingTop="10px"
+      paddingX="20px"
+      height="26rem"
+      overflowY="scroll"
+      id="tableList"
+      display={{ md: "none", lg: "list-item" }}
     >
-      <Flex justify="space-between" marginX="20px" marginY="15px">
-        <Text fontSize="md" color="gray.600" fontWeight="medium">
-          List Harga Udang
-        </Text>
-        <Button
-          width="fit-content"
-          height="fit-content"
-          padding="5px"
-          backgroundColor="blue.400"
-          color="white"
-          fontSize="sm"
-          onClick={() => {
-            navigate("/maps");
-          }}
-        >
-          TAMBAHKAN HARGA
-        </Button>
-      </Flex>
-      <hr></hr>
-      <TableContainer
-        paddingTop="10px"
-        paddingX="20px"
-        height="26rem"
-        overflowY="scroll"
-        id="tableList"
+      <InfiniteScroll
+        dataLength={data.length}
+        next={getNext}
+        hasMore={true}
+        loader={<p>Loading...</p>}
+        scrollableTarget="tableList"
       >
-        <InfiniteScroll
-          dataLength={data.length}
-          next={getNext}
-          hasMore={true}
-          loader={<p>Loading...</p>}
-          scrollableTarget="tableList"
-        >
-          <Table variant="striped" colorScheme="blackAlpha">
-            <Thead backgroundColor="#eaeff5">
-              <Tr>
-                <Th>Tanggal</Th>
-                <Th>Lokasi</Th>
-                <Th>Supplier</Th>
-                <Th>Harga Size {size}</Th>
-                <Th />
-                <Th />
+        <Table variant="striped" colorScheme="blackAlpha">
+          <Thead backgroundColor="#eaeff5">
+            <Tr>
+              <Th>Tanggal</Th>
+              <Th>Lokasi</Th>
+              <Th>Supplier</Th>
+              <Th>Harga Size {size}</Th>
+              <Th />
+              <Th />
+            </Tr>
+          </Thead>
+          <Tbody>
+            {data.map((item, index) => (
+              <Tr _hover={{ bgColor: "#e0e0e0" }} key={item.id}>
+                {/* convert month number to word */}
+                <Td>
+                  {item.date.slice(8)}&nbsp;
+                  {item.date.slice(5, 7) === "01"
+                    ? "Januari"
+                    : item.date.slice(5, 7) === "02"
+                    ? "Februari"
+                    : item.date.slice(5, 7) === "03"
+                    ? "Maret"
+                    : item.date.slice(5, 7) === "04"
+                    ? "April"
+                    : item.date.slice(5, 7) === "05"
+                    ? "Mei"
+                    : item.date.slice(5, 7) === "06"
+                    ? "Juni"
+                    : item.date.slice(5, 7) === "07"
+                    ? "Juli"
+                    : item.date.slice(5, 7) === "08"
+                    ? "Agustus"
+                    : item.date.slice(5, 7) === "09"
+                    ? "September"
+                    : item.date.slice(5, 7) === "10"
+                    ? "Oktober"
+                    : item.date.slice(5, 7) === "11"
+                    ? "November"
+                    : "Desember"}
+                  &nbsp;
+                  {item.date.slice(0, 4)}
+                </Td>
+                <Td flexDirection="column">
+                  <Text>{item.region.province_name}</Text>
+                  <Text>{item.region.name}</Text>
+                </Td>
+                <Td>{item.creator.name}</Td>
+                <Td>
+                  {item.currency.symbol} {sizePrice(item, size)}
+                </Td>
+                <Td>
+                  {/* <Link to={"detail"}> */}
+                  <Button
+                    bgColor="#1b72d3"
+                    color="white"
+                    fontSize="sm"
+                    height="8"
+                    borderRadius="3px"
+                    _hover={{ bgColor: "#1b72d3" }}
+                    _active={{ bgColor: "#1767bf" }}
+                    onClick={() => openDetail(item, data)}
+                  >
+                    LIHAT DETAIL
+                  </Button>
+                  {/* </Link> */}
+                </Td>
+                <Td>
+                  <HStack>
+                    <Facebook />
+                    <Whatsapp />
+                    <Twitter />
+                  </HStack>
+                </Td>
               </Tr>
-            </Thead>
-            <Tbody>
-              {data.map((item, index) => (
-                <Tr _hover={{ bgColor: "#e0e0e0" }} key={item.id}>
-                  {/* convert month number to word */}
-                  <Td>
-                    {item.date.slice(8)}&nbsp;
-                    {item.date.slice(5, 7) === "01"
-                      ? "Januari"
-                      : item.date.slice(5, 7) === "02"
-                      ? "Februari"
-                      : item.date.slice(5, 7) === "03"
-                      ? "Maret"
-                      : item.date.slice(5, 7) === "04"
-                      ? "April"
-                      : item.date.slice(5, 7) === "05"
-                      ? "Mei"
-                      : item.date.slice(5, 7) === "06"
-                      ? "Juni"
-                      : item.date.slice(5, 7) === "07"
-                      ? "Juli"
-                      : item.date.slice(5, 7) === "08"
-                      ? "Agustus"
-                      : item.date.slice(5, 7) === "09"
-                      ? "September"
-                      : item.date.slice(5, 7) === "10"
-                      ? "Oktober"
-                      : item.date.slice(5, 7) === "11"
-                      ? "November"
-                      : "Desember"}
-                    &nbsp;
-                    {item.date.slice(0, 4)}
-                  </Td>
-                  <Td flexDirection="column">
-                    <Text>{item.region.province_name}</Text>
-                    <Text>{item.region.name}</Text>
-                  </Td>
-                  <Td>{item.creator.name}</Td>
-                  <Td>
-                    {item.currency.symbol} {sizePrice(item, size)}
-                  </Td>
-                  <Td>
-                    {/* <Link to={"detail"}> */}
-                    <Button
-                      bgColor="#1b72d3"
-                      color="white"
-                      fontSize="sm"
-                      height="8"
-                      borderRadius="3px"
-                      _hover={{ bgColor: "#1b72d3" }}
-                      _active={{ bgColor: "#1767bf" }}
-                      onClick={() => openDetail(item, data)}
-                    >
-                      LIHAT DETAIL
-                    </Button>
-                    {/* </Link> */}
-                  </Td>
-                  <Td>
-                    <HStack>
-                      <Facebook />
-                      <Whatsapp />
-                      <Twitter />
-                    </HStack>
-                  </Td>
-                </Tr>
-              ))}
-            </Tbody>
-          </Table>
-        </InfiniteScroll>
-      </TableContainer>
-    </Box>
+            ))}
+          </Tbody>
+        </Table>
+      </InfiniteScroll>
+    </TableContainer>
   );
 }
 
