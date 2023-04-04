@@ -131,7 +131,7 @@ function PriceListTable({ size }) {
       height="26rem"
       overflowY="scroll"
       id="tableList"
-      display={{ md: "none", lg: "list-item" }}
+      display={{ base: "none", lg: "block" }}
     >
       <InfiniteScroll
         dataLength={data.length}

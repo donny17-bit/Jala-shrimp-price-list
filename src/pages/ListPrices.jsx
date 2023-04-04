@@ -9,6 +9,7 @@ import {
   Wrap,
   WrapItem,
   HStack,
+  Stack,
   Center,
   Button,
 } from "@chakra-ui/react";
@@ -180,13 +181,21 @@ function ListPrices() {
     return (
       <>
         {/* <Filter /> */}
-        <HStack
-          spacing="24px"
+        <Stack
+          spacing="20px"
           paddingX="15px"
-          paddingY="15px"
+          paddingBottom="15px"
+          paddingTop={{ base: "0px", lg: "15px" }}
           backgroundColor="white"
+          direction={{ base: "column", lg: "row" }}
         >
-          <Text fontSize="md" fontWeight="bold" color="gray.600">
+          <Text
+            fontSize="md"
+            fontWeight="bold"
+            color="gray.600"
+            marginTop="5px"
+            display={{ base: "none", lg: "block" }}
+          >
             Filter&nbsp;:
           </Text>
           <Select
@@ -195,7 +204,7 @@ function ListPrices() {
             onChange={setSelectedOption}
             options={options}
             isSearchable={true}
-            className="w-1/3"
+            className="sm:w-full lg:w-full"
             id="selectRegion"
           >
             <InfiniteScroll
@@ -207,23 +216,29 @@ function ListPrices() {
               scrollableTarget="selectRegion"
             ></InfiniteScroll>
           </Select>
-          <Select
-            placeholder="Pilih size udang"
-            onChange={(e) => selectSize(e)}
-            defaultValue={size}
-            options={sizes}
-            className="w-1/4"
-            isSearchable={false}
-          />
-          <Select
-            placeholder="Pilih jenis udang"
-            onChange={() => console.log("vannamei")}
-            defaultValue={"vannamei"}
-            options={[{ value: "vannamei", label: "Vannamei" }]}
-            className="w-1/5"
-            isSearchable={false}
-          />
-        </HStack>
+          <Flex
+            gap="20px"
+            width="100%"
+            justify={{ base: "space-between", lg: "flex-start" }}
+          >
+            <Select
+              placeholder="Pilih size udang"
+              onChange={(e) => selectSize(e)}
+              defaultValue={size}
+              options={sizes}
+              className="w-1/2 lg:w-1/2"
+              isSearchable={false}
+            />
+            <Select
+              placeholder="Pilih jenis udang"
+              onChange={() => console.log("vannamei")}
+              defaultValue={"vannamei"}
+              options={[{ value: "vannamei", label: "Vannamei" }]}
+              className="w-1/2 lg:w-2/5"
+              isSearchable={false}
+            />
+          </Flex>
+        </Stack>
         {/* filter */}
         <Container backgroundColor="gray.100" maxW="full" paddingY="15px">
           <Flex
@@ -306,35 +321,38 @@ function ListPrices() {
                 fontWeight="bold"
                 fontSize="md"
                 marginBottom="10px"
+                display={{ base: "none", lg: "block" }}
               >
                 Trend harga di berbagai daerah
               </Text>
               <Wrap
-                spacingX="0px"
-                spacingY="10px"
-                // border="2px"
-                justify="space-between"
-                direction={{ md: "column", xl: "row" }}
+                justify="space-evenly"
+                display={{ base: "none", lg: "block" }}
               >
-                {dataPrice ? (
-                  <>
-                    <WrapItem>
-                      <CardTrend data={dataPrice.data[5]} size={size} />
-                    </WrapItem>
-                    <WrapItem>
-                      <CardTrend data={dataPrice.data[3]} size={size} />
-                    </WrapItem>
-                    <WrapItem>
-                      <CardTrend data={dataPrice.data[14]} size={size} />
-                    </WrapItem>
-                    <WrapItem>
-                      <CardTrend data={dataPrice.data[7]} size={size} />
-                    </WrapItem>
-                  </>
-                ) : (
-                  <></>
-                )}
+                <WrapItem width="45%">
+                  <CardTrend data={dataPrice.data[5]} size={size} />
+                </WrapItem>
+                <WrapItem width="45%">
+                  <CardTrend data={dataPrice.data[3]} size={size} />
+                </WrapItem>
+                <WrapItem width="45%">
+                  <CardTrend data={dataPrice.data[14]} size={size} />
+                </WrapItem>
+                <WrapItem width="45%">
+                  <CardTrend data={dataPrice.data[7]} size={size} />
+                </WrapItem>
               </Wrap>
+              <Flex
+                gap="20px"
+                flexDirection={"row"}
+                overflowX="scroll"
+                display={{ base: "flex", lg: "none" }}
+              >
+                <CardTrend data={dataPrice.data[5]} size={size} />
+                <CardTrend data={dataPrice.data[3]} size={size} />
+                <CardTrend data={dataPrice.data[14]} size={size} />
+                <CardTrend data={dataPrice.data[7]} size={size} />
+              </Flex>
             </Flex>
           </Flex>
           <Flex
@@ -393,7 +411,7 @@ function ListPrices() {
               height="40rem"
               overflow="scroll"
               gap="10px"
-              display={{ sm: "flex", lg: "none" }}
+              display={{ base: "flex", lg: "none" }}
               id="cardList"
             >
               <InfiniteScroll

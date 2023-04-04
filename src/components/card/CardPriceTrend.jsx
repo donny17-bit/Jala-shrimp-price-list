@@ -128,7 +128,7 @@ function CardPriceTrend({ data, size }) {
   return (
     <Box
       paddingX="15px"
-      width={{ sm: "full", md: "full", lg: "12rem", xl: "15.7rem" }}
+      width={{ base: "14rem", lg: "100%" }}
       backgroundColor="white"
       borderRadius="5px"
       border="1px"
@@ -156,10 +156,7 @@ function CardPriceTrend({ data, size }) {
         >
           {dateBefore[2]} {dateBefore[1]} - {dateNow[2]} {dateNow[1]}
         </Text>
-        <Box
-          width={{ sm: "15rem", md: "full", lg: "10rem", xl: "14.7rem" }}
-          height={{ md: "9rem", lg: "5rem", xl: "5rem" }}
-        >
+        <Box width={"full"} height={"5rem"}>
           <Line datasetIdKey="id" data={dataSet} options={options} />
         </Box>
       </Flex>
