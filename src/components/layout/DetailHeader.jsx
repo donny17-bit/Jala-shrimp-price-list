@@ -6,7 +6,7 @@ function DetailHeader({ province, city }) {
     <>
       <Flex w="full" bgColor="white" justify="space-between" padding="15px">
         <Flex flexDirection="column">
-          <Text fontSize="lg" fontWeight="medium" color="blue">
+          <Text fontSize="lg" fontWeight="medium" color="#1767bf">
             {province}
           </Text>
           <Text fontSize="sm" color="gray.600">
@@ -20,6 +20,8 @@ function DetailHeader({ province, city }) {
             color="white"
             h="fit-content"
             padding="2"
+            _hover={{ bgColor: "#1767bf" }}
+            _active={{ bgColor: "#1767bf" }}
           >
             KEMBALI
           </Button>

@@ -9,7 +9,9 @@ import {
   VStack,
   Icon,
   Link,
+  Center,
 } from "@chakra-ui/react";
+import { CheckIcon } from "@chakra-ui/icons";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import { Line } from "react-chartjs-2";
 import {
@@ -182,7 +184,13 @@ function PriceHistory({ detail }) {
       border="1px"
       borderColor="gray.200"
     >
-      <Text color="gray.600" fontSize="md" fontWeight="medium" padding="15px">
+      <Text
+        color="gray.600"
+        fontSize={{ base: "sm", md: "md" }}
+        fontWeight="medium"
+        textAlign={{ base: "center", md: "start" }}
+        padding="15px"
+      >
         Riwayat Harga Di Daerah {province}
       </Text>
       <hr></hr>
@@ -269,6 +277,40 @@ function PriceHistory({ detail }) {
               <Text marginX="5px">-</Text>
               <Input type="date" borderRadius="3px" h="40px" />
             </Flex>
+            <Center>
+              <Flex gap="10px">
+                <Center w={["20px", "25px"]} h={["20px", "25px"]} bg="#1b77df">
+                  <CheckIcon color="white" w="14px" />
+                </Center>
+                <Text
+                  fontSize={["xs", "sm"]}
+                  color="gray.600"
+                  fontWeight="bold"
+                >
+                  Size 100
+                </Text>
+                <Center w={["20px", "25px"]} h={["20px", "25px"]} bg="#1bdf9c">
+                  <CheckIcon color="white" w="14px" />
+                </Center>
+                <Text
+                  fontSize={["xs", "sm"]}
+                  color="gray.600"
+                  fontWeight="bold"
+                >
+                  Size 70
+                </Text>
+                <Center w={["20px", "25px"]} h={["20px", "25px"]} bg="#d8e01c">
+                  <CheckIcon color="white" w="14px" />
+                </Center>
+                <Text
+                  fontSize={["xs", "sm"]}
+                  color="gray.600"
+                  fontWeight="bold"
+                >
+                  Size 40
+                </Text>
+              </Flex>
+            </Center>
             <Line datasetIdKey="id" data={dataTable} options={options} />
             <Box
               bgColor="#fdf6e6"

@@ -155,7 +155,7 @@ function PriceListTable({ size }) {
             {data.map((item, index) => (
               <Tr _hover={{ bgColor: "#e0e0e0" }} key={item.id}>
                 {/* convert month number to word */}
-                <Td>
+                <Td fontSize="sm" color="gray.600">
                   {item.date.slice(8)}&nbsp;
                   {item.date.slice(5, 7) === "01"
                     ? "Januari"
@@ -184,11 +184,17 @@ function PriceListTable({ size }) {
                   {item.date.slice(0, 4)}
                 </Td>
                 <Td flexDirection="column">
-                  <Text>{item.region.province_name}</Text>
-                  <Text>{item.region.name}</Text>
+                  <Text fontSize="sm" color="#1b72d3" fontWeight="bold">
+                    {item.region.province_name}
+                  </Text>
+                  <Text fontSize="sm" color="gray.600">
+                    {item.region.name}
+                  </Text>
                 </Td>
-                <Td>{item.creator.name}</Td>
-                <Td>
+                <Td fontSize="sm" color="gray.600" fontWeight="bold">
+                  {item.creator.name}
+                </Td>
+                <Td fontSize="sm" color="gray.600">
                   {item.currency.symbol} {sizePrice(item, size)}
                 </Td>
                 <Td>

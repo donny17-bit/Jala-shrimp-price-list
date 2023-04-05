@@ -14,7 +14,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import Filter from "../components/layout/Filter";
 import CardTrend from "../components/card/CardPriceTrend";
 import CardPrice from "../components/card/CardPrice";
 import PriceListTable from "../components/table/PriceListTable";
@@ -198,7 +197,7 @@ function ListPrices() {
             Filter&nbsp;:
           </Text>
           <Select
-            placeholder="pilih lokasi"
+            placeholder="Pilih lokasi"
             defaultValue={selectedOption}
             onChange={setSelectedOption}
             options={options}
@@ -221,7 +220,7 @@ function ListPrices() {
             justify={{ base: "space-between", lg: "flex-start" }}
           >
             <Select
-              placeholder="Pilih size udang"
+              placeholder="Size"
               onChange={(e) => selectSize(e)}
               defaultValue={size}
               options={sizes}
@@ -229,7 +228,7 @@ function ListPrices() {
               isSearchable={false}
             />
             <Select
-              placeholder="Pilih jenis udang"
+              placeholder="Jenis"
               onChange={() => console.log("vannamei")}
               defaultValue={"vannamei"}
               options={[{ value: "vannamei", label: "Vannamei" }]}
@@ -271,8 +270,6 @@ function ListPrices() {
           >
             <Box
               flex="1.5"
-              // width="60%"
-              // height="365px"
               backgroundColor="white"
               borderRadius="5px"
               paddingY="10px"
@@ -281,13 +278,12 @@ function ListPrices() {
             >
               <Text
                 color="gray.500"
-                fontSize="md"
+                fontSize={["sm", "md"]}
                 fontWeight="medium"
                 paddingStart="15px"
               >
                 Persebaran Harga Udang Size 100
               </Text>
-
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2894115.3889098424!2d110.43965071674377!3d-7.450174956058436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1680512283491!5m2!1sid!2sid"
                 width="100%"
@@ -299,16 +295,28 @@ function ListPrices() {
               ></iframe>
               <Center marginY="10px">
                 <Flex gap="10px">
-                  <Center w="25px" h="25px" bg="#676963"></Center>
-                  <Text fontSize="sm" color="gray.600">
+                  <Center
+                    w={["20px", "25px"]}
+                    h={["20px", "25px"]}
+                    bg="#676963"
+                  ></Center>
+                  <Text fontSize={["xs", "sm"]} color="gray.600">
                     &gt; 1 Bulan
                   </Text>
-                  <Center w="25px" h="25px" bg="#133878"></Center>
-                  <Text fontSize="sm" color="gray.600">
+                  <Center
+                    w={["20px", "25px"]}
+                    h={["20px", "25px"]}
+                    bg="#133878"
+                  ></Center>
+                  <Text fontSize={["xs", "sm"]} color="gray.600">
                     &gt; 1 Minggu
                   </Text>
-                  <Center w="25px" h="25px" bg="#1b77df"></Center>
-                  <Text fontSize="sm" color="gray.600">
+                  <Center
+                    w={["20px", "25px"]}
+                    h={["20px", "25px"]}
+                    bg="#1b77df"
+                  ></Center>
+                  <Text fontSize={["xs", "sm"]} color="gray.600">
                     1 Baru
                   </Text>
                 </Flex>
@@ -374,7 +382,6 @@ function ListPrices() {
               objectFit="cover"
             />
           </Flex>
-
           <Box
             marginTop="20px"
             border="1px"
@@ -385,7 +392,11 @@ function ListPrices() {
             borderColor="gray.200"
           >
             <Flex justify="space-between" marginX="20px" marginY="15px">
-              <Text fontSize="md" color="gray.600" fontWeight="medium">
+              <Text
+                fontSize={["sm", "md"]}
+                color="gray.600"
+                fontWeight="medium"
+              >
                 List Harga Udang
               </Text>
               <Button
@@ -394,10 +405,9 @@ function ListPrices() {
                 padding="5px"
                 backgroundColor="blue.400"
                 color="white"
-                fontSize="sm"
-                onClick={() => {
-                  navigate("/maps");
-                }}
+                fontSize={["xs", "sm"]}
+                _active={{ bgColor: "#1767bf" }}
+                _hover={{ bgColor: "#1767bf" }}
               >
                 TAMBAHKAN HARGA
               </Button>

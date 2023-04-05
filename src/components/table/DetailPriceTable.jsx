@@ -24,6 +24,7 @@ function DetailPriceTable({ detail }) {
     if (detail[element] === null) {
       continue;
     }
+
     table.push(
       <Tr borderTop="2px" borderTopColor="gray.300" key={element}>
         <Td fontSize="sm" color="gray.600" fontWeight="bold">
@@ -50,13 +51,23 @@ function DetailPriceTable({ detail }) {
       border="1px"
       borderColor="gray.200"
     >
-      <Text color="gray.600" fontSize="md" fontWeight="medium" padding="15px">
+      <Text
+        color="gray.600"
+        fontSize={["sm", "md"]}
+        fontWeight="medium"
+        padding="15px"
+      >
         Detail Harga Udang
       </Text>
       <hr></hr>
-      <Flex flexDirection={"row"} padding="15px">
-        <VStack flex="2" alignItems="start" spacing="5px">
-          <Text fontSize="sm" color="gray.600">
+      <Flex flexDirection={{ base: "column", md: "row" }} padding="15px">
+        <VStack
+          flex="2"
+          alignItems="start"
+          spacing={{ base: "0px", md: "5px" }}
+          marginBottom={{ base: "10px", md: "0px" }}
+        >
+          <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600">
             {detail.date.slice(8)}&nbsp;
             {detail.date.slice(5, 7) === "01"
               ? "Januari"
@@ -85,32 +96,47 @@ function DetailPriceTable({ detail }) {
             {detail.date.slice(0, 4)}
           </Text>
           <Text
-            fontSize="sm"
+            fontSize={{ base: "xs", md: "sm" }}
             fontWeight="bold"
             color="gray.600"
-            w={["140px", "10rem"]}
+            w={{ base: "full", md: "10rem" }}
+            // marginBottom={{ base: "50px" }}
           >
             Udang Vannamei (Penaeus Vannamei)
           </Text>
         </VStack>
-        <VStack flex="1" alignItems="start" spacing="5px">
-          <Text fontSize="sm" color="gray.600">
+        <VStack
+          flex="1"
+          alignItems="start"
+          spacing={{ base: "0px", md: "5px" }}
+          marginBottom={{ base: "10px", md: "0px" }}
+        >
+          <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600">
             Supplier:
           </Text>
-          <Text fontSize="sm" fontWeight="bold" color="gray.600">
+          <Text
+            fontSize={{ base: "xs", md: "sm" }}
+            fontWeight="bold"
+            color="gray.600"
+          >
             {detail.creator.name}
           </Text>
         </VStack>
-        <VStack flex="1" alignItems="start" spacing="5px">
-          <Text fontSize="sm" color="gray.600">
+        <VStack
+          flex="1"
+          alignItems="start"
+          spacing={{ base: "0px", md: "5px" }}
+          marginBottom={{ base: "10px", md: "0px" }}
+        >
+          <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600">
             Kontak
           </Text>
-          <Text fontSize="sm" color="gray.600">
+          <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600">
             {detail.creator.phone}
           </Text>
           <Link
-            color="blue"
-            fontSize="sm"
+            color="#1767bf"
+            fontSize={{ base: "xs", md: "sm" }}
             textDecoration="underline"
             fontWeight="semibold"
           >
@@ -131,32 +157,43 @@ function DetailPriceTable({ detail }) {
           <Tbody>{table}</Tbody>
         </Table>
       </TableContainer>
-      <Flex justify="space-between" padding="15px">
-        <Text fontSize="sm" fontWeight="bold" color="gray.600">
+      <Flex
+        padding="15px"
+        flexDirection={{ base: "column", sm: "row" }}
+        gap="15px"
+      >
+        <Text
+          fontSize="sm"
+          fontWeight="bold"
+          color="gray.600"
+          // justifySelf="start"
+        >
           Catatan
         </Text>
-        <HStack
-          border="1px"
-          borderColor="gray.400"
-          borderRadius="5px"
-          paddingX="10px"
-          paddingY="5px"
-        >
-          <Flex flexDirection="column">
-            <Text fontSize="md" color="gray.600" textAlign="center">
-              {share}
-            </Text>
-            <Text fontSize="xs" color="gray.500">
-              Shares
-            </Text>
-          </Flex>
-          <HStack>
-            <Facebook />
-            <Whatsapp />
-            <Twitter />
-            <Messenger />
+        <Flex justify="end" flex="1">
+          <HStack
+            border="1px"
+            borderColor="gray.400"
+            borderRadius="5px"
+            paddingX="10px"
+            paddingY="5px"
+          >
+            <Flex flexDirection="column">
+              <Text fontSize="md" color="gray.600" textAlign="center">
+                {share}
+              </Text>
+              <Text fontSize="xs" color="gray.500">
+                Shares
+              </Text>
+            </Flex>
+            <HStack>
+              <Facebook />
+              <Whatsapp />
+              <Twitter />
+              <Messenger />
+            </HStack>
           </HStack>
-        </HStack>
+        </Flex>
       </Flex>
     </Box>
   );

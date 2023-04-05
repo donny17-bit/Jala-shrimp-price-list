@@ -22,9 +22,7 @@ function CardPrice({ detail, otherData }) {
   return (
     <Box
       bgColor="#f5f5f5"
-      minW="20rem"
       w="full"
-      h="15rem"
       border="1px"
       borderColor="gray.300"
       borderRadius="5px"
