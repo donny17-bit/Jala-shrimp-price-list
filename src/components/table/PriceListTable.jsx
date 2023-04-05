@@ -13,10 +13,9 @@ import {
   TableContainer,
   HStack,
 } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Facebook, Twitter, Whatsapp } from "../button/index";
 import InfiniteScroll from "react-infinite-scroll-component";
-// import axiosInstance from "../../utils/axios";
 import axios from "axios";
 
 function PriceListTable({ size }) {
@@ -27,6 +26,21 @@ function PriceListTable({ size }) {
     meta: {},
   });
   const [data, setData] = useState([]);
+  const month = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ];
+  let keys;
 
   const openDetail = (item, data) => {
     navigate("/detail", {
@@ -57,67 +71,8 @@ function PriceListTable({ size }) {
   };
 
   const sizePrice = (item, size) => {
-    switch (size) {
-      case 20:
-        return item.size_20;
-        break;
-      case 30:
-        return item.size_30;
-        break;
-      case 40:
-        return item.size_40;
-        break;
-      case 50:
-        return item.size_50;
-        break;
-      case 60:
-        return item.size_60;
-        break;
-      case 70:
-        return item.size_70;
-        break;
-      case 80:
-        return item.size_80;
-        break;
-      case 90:
-        return item.size_90;
-        break;
-      case 100:
-        return item.size_100;
-        break;
-      case 110:
-        return item.size_110;
-        break;
-      case 120:
-        return item.size_120;
-        break;
-      case 130:
-        return item.size_130;
-        break;
-      case 140:
-        return item.size_140;
-        break;
-      case 150:
-        return item.size_150;
-        break;
-      case 160:
-        return item.size_160;
-        break;
-      case 170:
-        return item.size_170;
-        break;
-      case 180:
-        return item.size_180;
-        break;
-      case 190:
-        return item.size_190;
-        break;
-      case 200:
-        return item.size_200;
-        break;
-      default:
-        break;
-    }
+    keys = Object.keys(item).filter((word) => word.match(`size_${size}`));
+    return item[keys[0]];
   };
 
   useEffect(() => {
@@ -157,29 +112,7 @@ function PriceListTable({ size }) {
                 {/* convert month number to word */}
                 <Td fontSize="sm" color="gray.600">
                   {item.date.slice(8)}&nbsp;
-                  {item.date.slice(5, 7) === "01"
-                    ? "Januari"
-                    : item.date.slice(5, 7) === "02"
-                    ? "Februari"
-                    : item.date.slice(5, 7) === "03"
-                    ? "Maret"
-                    : item.date.slice(5, 7) === "04"
-                    ? "April"
-                    : item.date.slice(5, 7) === "05"
-                    ? "Mei"
-                    : item.date.slice(5, 7) === "06"
-                    ? "Juni"
-                    : item.date.slice(5, 7) === "07"
-                    ? "Juli"
-                    : item.date.slice(5, 7) === "08"
-                    ? "Agustus"
-                    : item.date.slice(5, 7) === "09"
-                    ? "September"
-                    : item.date.slice(5, 7) === "10"
-                    ? "Oktober"
-                    : item.date.slice(5, 7) === "11"
-                    ? "November"
-                    : "Desember"}
+                  {month[parseInt(item.date.slice(5, 7))]}
                   &nbsp;
                   {item.date.slice(0, 4)}
                 </Td>
@@ -198,7 +131,6 @@ function PriceListTable({ size }) {
                   {item.currency.symbol} {sizePrice(item, size)}
                 </Td>
                 <Td>
-                  {/* <Link to={"detail"}> */}
                   <Button
                     bgColor="#1b72d3"
                     color="white"
@@ -211,7 +143,6 @@ function PriceListTable({ size }) {
                   >
                     LIHAT DETAIL
                   </Button>
-                  {/* </Link> */}
                 </Td>
                 <Td>
                   <HStack>

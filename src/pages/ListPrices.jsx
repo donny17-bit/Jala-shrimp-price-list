@@ -109,9 +109,6 @@ function ListPrices() {
   const [size, setSize] = useState(100);
   const [dataPriceList, setDataPriceList] = useState([]);
 
-  // const price = useSelector((state) => state.priceList);
-  // const dispatch = useDispatch();
-
   let options = [];
 
   const getDataPrice = async () => {
@@ -129,7 +126,6 @@ function ListPrices() {
   const getDataPriceNext = async () => {
     try {
       const response = await axios.get(dataPrice.links.next);
-      // const response = await dispatch(getPriceList(size, 1));
       setDataPrice(response.data);
       setDataPriceList([...dataPriceList, ...response.data.data]);
     } catch (error) {
@@ -282,7 +278,7 @@ function ListPrices() {
                 fontWeight="medium"
                 paddingStart="15px"
               >
-                Persebaran Harga Udang Size 100
+                Persebaran Harga Udang Size {size}
               </Text>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2894115.3889098424!2d110.43965071674377!3d-7.450174956058436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1680512283491!5m2!1sid!2sid"

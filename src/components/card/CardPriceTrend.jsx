@@ -16,6 +16,7 @@ function CardPriceTrend({ data, size }) {
   Chart.register(PointElement);
   Chart.register(LineElement);
 
+  let keys;
   let dateNow = new Date(data.date);
   dateNow = dateNow.toDateString().split(" ");
   let dateBefore = new Date(data.date);
@@ -23,67 +24,8 @@ function CardPriceTrend({ data, size }) {
   dateBefore = dateBefore.toDateString().split(" ");
 
   const sizePrice = (size) => {
-    switch (size) {
-      case 20:
-        return data.size_20;
-        break;
-      case 30:
-        return data.size_30;
-        break;
-      case 40:
-        return data.size_40;
-        break;
-      case 50:
-        return data.size_50;
-        break;
-      case 60:
-        return data.size_60;
-        break;
-      case 70:
-        return data.size_70;
-        break;
-      case 80:
-        return data.size_80;
-        break;
-      case 90:
-        return data.size_90;
-        break;
-      case 100:
-        return data.size_100;
-        break;
-      case 110:
-        return data.size_110;
-        break;
-      case 120:
-        return data.size_120;
-        break;
-      case 130:
-        return data.size_130;
-        break;
-      case 140:
-        return data.size_140;
-        break;
-      case 150:
-        return data.size_150;
-        break;
-      case 160:
-        return data.size_160;
-        break;
-      case 170:
-        return data.size_170;
-        break;
-      case 180:
-        return data.size_180;
-        break;
-      case 190:
-        return data.size_190;
-        break;
-      case 200:
-        return data.size_200;
-        break;
-      default:
-        break;
-    }
+    keys = Object.keys(data).filter((word) => word.match(`size_${size}`));
+    return data[keys[0]];
   };
 
   const options = {

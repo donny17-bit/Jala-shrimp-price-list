@@ -97,6 +97,7 @@ function PriceHistory({ detail }) {
       );
       totalPriceList40.push(price);
     }
+
     day.map((item) => {
       switch (item.month) {
         case 1:

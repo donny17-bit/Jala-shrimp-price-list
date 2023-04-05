@@ -16,10 +16,25 @@ import {
 import { Facebook, Twitter, Whatsapp, Messenger } from "../button/index";
 
 function DetailPriceTable({ detail }) {
+  const month = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ];
   const share = Math.round(Math.random() * 10);
   const keys = Object.keys(detail).filter((word) => word.match("size"));
   let table = [];
 
+  // create table price and remove null price
   for (let element of keys) {
     if (detail[element] === null) {
       continue;
@@ -34,7 +49,7 @@ function DetailPriceTable({ detail }) {
             element.slice(5)}
         </Td>
         <Td fontSize="sm" color="gray.600">
-          Rp {detail[element]}
+          {detail.currency.symbol}&nbsp;{detail[element]}
         </Td>
         <Td></Td>
         <Td></Td>
@@ -69,29 +84,7 @@ function DetailPriceTable({ detail }) {
         >
           <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600">
             {detail.date.slice(8)}&nbsp;
-            {detail.date.slice(5, 7) === "01"
-              ? "Januari"
-              : detail.date.slice(5, 7) === "02"
-              ? "Februari"
-              : detail.date.slice(5, 7) === "03"
-              ? "Maret"
-              : detail.date.slice(5, 7) === "04"
-              ? "April"
-              : detail.date.slice(5, 7) === "05"
-              ? "Mei"
-              : detail.date.slice(5, 7) === "06"
-              ? "Juni"
-              : detail.date.slice(5, 7) === "07"
-              ? "Juli"
-              : detail.date.slice(5, 7) === "08"
-              ? "Agustus"
-              : detail.date.slice(5, 7) === "09"
-              ? "September"
-              : detail.date.slice(5, 7) === "10"
-              ? "Oktober"
-              : detail.date.slice(5, 7) === "11"
-              ? "November"
-              : "Desember"}
+            {month[parseInt(detail.date.slice(5, 7))]}
             &nbsp;
             {detail.date.slice(0, 4)}
           </Text>
@@ -100,7 +93,6 @@ function DetailPriceTable({ detail }) {
             fontWeight="bold"
             color="gray.600"
             w={{ base: "full", md: "10rem" }}
-            // marginBottom={{ base: "50px" }}
           >
             Udang Vannamei (Penaeus Vannamei)
           </Text>
